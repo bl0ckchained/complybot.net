@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "complybot.net",
+			"path": "."
+		},
+		{
+			"name": "complybot.net-server",
+			"path": "../complybot.net-server"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "complybot.net"
+	}
+}

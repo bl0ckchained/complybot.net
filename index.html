@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ComplyBot - Affordable ADA Compliance</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon_white.png" type="image/png">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo-nav">
+      <img src="images/complybot_logo.jpg" alt="ComplyBot Logo" class="logo">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html">Help Center</a>
+      </nav>
+    </div>
+    <h1>Protect Your Website from ADA Lawsuits — Fast & Affordable</h1>
+    <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29/month.</p>
+    <a href="#pricing" class="cta-btn">View Plans</a>
+  </header>
+
+  <main>
+    <section id="how-it-works">
+      <h2>How ComplyBot Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1️⃣ Quick Free Scan</h3>
+          <p>Scan your site for ADA & WCAG issues in seconds.</p>
+        </div>
+        <div class="step">
+          <h3>2️⃣ Instant Fixes</h3>
+          <p>Our AI suggests one-click fixes to pass compliance checks.</p>
+        </div>
+        <div class="step">
+          <h3>3️⃣ Stay Protected</h3>
+          <p>Get your certificate & 24/7 monitoring for total peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2>Simple Transparent Pricing</h2>
+      <div class="pricing-tiers">
+        <div class="plan">
+          <h3>Starter</h3>
+          <p>1–15 pages</p>
+          <strong>$29/mo</strong>
+          <a href="#scan" class="cta-btn">Get Started</a>
+        </div>
+        <div class="plan">
+          <h3>Pro</h3>
+          <p>16–100 pages</p>
+          <strong>$99/mo</strong>
+          <a href="#scan" class="cta-btn">Get Started</a>
+        </div>
+        <div class="plan">
+          <h3>Business</h3>
+          <p>101–500 pages</p>
+          <strong>$249/mo</strong>
+          <a href="#scan" class="cta-btn">Get Started</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="scan">
+      <h2>Start Your Free Quick Scan</h2>
+      <form action="http://localhost:3000/scan" method="POST">
+        <input type="text" name="url" placeholder="https://yourwebsite.com" required>
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <button type="submit" class="cta-btn">Run Free Scan</button>
+      </form>
+    </section>
+
+    <section id="testimonials">
+      <h2>What People Say</h2>
+      <blockquote>“ComplyBot saved my local bakery from a nasty ADA lawsuit. Worth every penny.” — Sarah K.</blockquote>
+      <blockquote>“I love the simple pricing. We sleep better knowing we're covered.” — Mike D.</blockquote>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ComplyBot.net | <a href="mailto:support@complybot.net">support@complybot.net</a></p>
+  </footer>
+
+</body>
+</html>

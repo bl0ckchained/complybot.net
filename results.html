@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ComplyBot - Scan Complete</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon_white.png" type="image/png">
+
+</head>
+<body>
+
+  <header>
+    <div class="logo-nav">
+      <img src="images/complybot_logo.jpg" alt="ComplyBot Logo" class="logo">
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html">Help Center</a>
+      </nav>
+    </div>
+    <h1>✅ Your Free Scan is Complete</h1>
+    <p>We've emailed you a summary of your website's ADA compliance status.</p>
+  </header>
+
+  <main>
+    <section id="next-steps">
+      <h2>Next Steps</h2>
+      <p>Want the full detailed report, fixes, and an official compliance certificate?</p>
+      <p>Upgrade for just $29 — protect your business today!</p>
+      <button id="upgrade-button" class="cta-btn">Upgrade to Full Fix</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 ComplyBot.net | <a href="mailto:support@complybot.net">support@complybot.net</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('upgrade-button').addEventListener('click', async () => {
+      const email = localStorage.getItem('email');
+      const url = localStorage.getItem('url');
+
+      if (!email || !url) {
+        alert('Please run a scan first from the home page.');
+        window.location = 'index.html';
+        return;
+      }
+
+      const res = await fetch('/create-checkout-session', { method: 'POST' });
+      const data = await res.json();
+      window.location = data.url;
+    });
+  </script>
+
+</body>
+</html>
