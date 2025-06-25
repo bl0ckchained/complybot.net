@@ -17,7 +17,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const sitePath = path.resolve(__dirname, '../complybot.net');
+const sitePath = path.join(__dirname, 'public');
 console.log("STATIC PATH:", sitePath);
 
 app.use(express.static(sitePath));
