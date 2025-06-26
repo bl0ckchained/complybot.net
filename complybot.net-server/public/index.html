@@ -70,10 +70,11 @@
     <section id="scan">
       <h2>Start Your Free Quick Scan</h2>
       <form action="http://localhost:3000/scan" method="POST">
-        <input type="text" name="url" placeholder="https://yourwebsite.com" required>
-        <input type="email" name="email" placeholder="you@example.com" required>
-        <button type="submit" class="cta-btn">Run Free Scan</button>
-      </form>
+  <input type="text" name="url" placeholder="https://yourwebsite.com" required autocomplete="url">
+  <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+  <button type="submit" class="cta-btn">Run Free Scan</button>
+</form>
+
     </section>
 
     <section id="testimonials">
