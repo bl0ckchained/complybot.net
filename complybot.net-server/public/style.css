@@ -47,6 +47,8 @@ h1 {
 h2 {
   text-align: center;
   margin-top: 50px;
+  font-size: 2rem;
+  color: #111;
 }
 
 .steps, .pricing-tiers {
@@ -55,16 +57,38 @@ h2 {
   justify-content: center;
   margin: 20px auto;
   max-width: 1000px;
+  gap: 20px;
 }
 
 .step, .plan {
   background: #fff;
   border: 1px solid #ddd;
-  margin: 15px;
-  padding: 20px;
-  border-radius: 8px;
-  flex: 1 1 250px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  padding: 25px;
+  border-radius: 10px;
+  flex: 1 1 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.plan ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.plan ul li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+
+.plan ul li:last-child {
+  border-bottom: none;
 }
 
 .cta-btn {
@@ -74,6 +98,8 @@ h2 {
   padding: 12px 30px;
   border-radius: 5px;
   margin-top: 15px;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
 .cta-btn:hover {
@@ -84,19 +110,35 @@ form {
   max-width: 500px;
   margin: 20px auto;
   text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 form input {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
-  border-radius: 4px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 form button {
   width: 100%;
   padding: 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #218838;
 }
 
 blockquote {
@@ -105,6 +147,9 @@ blockquote {
   background: #fff;
   padding: 20px;
   border-left: 5px solid #28a745;
+  border-radius: 6px;
+  font-style: italic;
+  color: #444;
 }
 
 .blog-list {
@@ -140,10 +185,14 @@ blockquote {
   text-decoration: underline;
 }
 
-
 footer {
   background: #000;
   color: #fff;
   text-align: center;
   padding: 20px;
+  font-size: 0.9rem;
+}
+footer a {
+  color: #fff;
+  text-decoration: underline;
 }

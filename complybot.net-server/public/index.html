@@ -6,7 +6,6 @@
   <title>ComplyBot - Affordable ADA Compliance</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="/favicon.png" type="image/png">
-
 </head>
 <body>
 
@@ -20,7 +19,7 @@
       </nav>
     </div>
     <h1>Protect Your Website from ADA Lawsuits — Fast & Affordable</h1>
-    <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29/month.</p>
+    <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29.</p>
     <a href="#pricing" class="cta-btn">View Plans</a>
   </header>
 
@@ -38,7 +37,7 @@
         </div>
         <div class="step">
           <h3>3️⃣ Stay Protected</h3>
-          <p>Get your certificate & 24/7 monitoring for total peace of mind.</p>
+          <p>Get your certificate & optional monitoring for peace of mind.</p>
         </div>
       </div>
     </section>
@@ -47,22 +46,53 @@
       <h2>Simple Transparent Pricing</h2>
       <div class="pricing-tiers">
         <div class="plan">
-          <h3>Starter</h3>
-          <p>1–15 pages</p>
-          <strong>$29/mo</strong>
+          <h3>Starter Scan</h3>
+          <p>Scan + fix up to 10 pages. Perfect for small businesses.</p>
+          <strong>$29 one-time</strong>
+          <ul>
+            <li>Automated WCAG/ADA scan</li>
+            <li>Code-level fixes</li>
+            <li>PDF Compliance Report</li>
+            <li>"ComplyBot Verified" badge</li>
+          </ul>
           <a href="#scan" class="cta-btn">Get Started</a>
         </div>
+
         <div class="plan">
-          <h3>Pro</h3>
-          <p>16–100 pages</p>
-          <strong>$99/mo</strong>
-          <a href="#scan" class="cta-btn">Get Started</a>
+          <h3>Human Audit</h3>
+          <p>Full manual review with mobile & keyboard checks.</p>
+          <strong>$99 one-time</strong>
+          <ul>
+            <li>Everything in Starter +</li>
+            <li>Human accessibility audit</li>
+            <li>Remediation plan PDF</li>
+            <li>Accessibility statement included</li>
+          </ul>
+          <a href="#scan" class="cta-btn">Request Audit</a>
         </div>
+
         <div class="plan">
-          <h3>Business</h3>
-          <p>101–500 pages</p>
-          <strong>$249/mo</strong>
-          <a href="#scan" class="cta-btn">Get Started</a>
+          <h3>Monthly Monitoring</h3>
+          <p>Keep your site compliant long-term with monthly checks.</p>
+          <strong>$19/mo</strong>
+          <ul>
+            <li>Monthly re-scan</li>
+            <li>Updated reports + alerts</li>
+            <li>Priority email support</li>
+            <li>Auto-refresh badge</li>
+          </ul>
+          <a href="#scan" class="cta-btn">Subscribe</a>
+        </div>
+
+        <div class="plan">
+          <h3>Add-Ons</h3>
+          <p>Customize your compliance with these extras:</p>
+          <ul>
+            <li>Accessibility Statement – $49</li>
+            <li>Fix-It-For-Me Hour – $59/hr</li>
+            <li>PDF Review – $39</li>
+            <li>Consult Call – $49 (30 mins)</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -70,11 +100,10 @@
     <section id="scan">
       <h2>Start Your Free Quick Scan</h2>
       <form action="http://localhost:3000/scan" method="POST">
-  <input type="text" name="url" placeholder="https://yourwebsite.com" required autocomplete="url">
-  <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
-  <button type="submit" class="cta-btn">Run Free Scan</button>
-</form>
-
+        <input type="text" name="url" placeholder="https://yourwebsite.com" required autocomplete="url">
+        <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        <button type="submit" class="cta-btn">Run Free Scan</button>
+      </form>
     </section>
 
     <section id="testimonials">
