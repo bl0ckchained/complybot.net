@@ -35,14 +35,25 @@ app.post('/scan', async (req, res) => {
       `\n\nUpgrade for $29 to receive a full report, fixes, certificate & more.`;
 
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST, // smtp.zoho.com
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-      }
-    });
+  host: "smtp.zoho.com", // 👈 hardcoded is better here to avoid .env typos
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.EMAIL_USER, // e.g., support@complybot.net
+    pass: process.env.EMAIL_PASS  // your Zoho app password
+  }
+});
+
+const mailOptions = {
+  from: process.env.EMAIL_FROM || process.env.EMAIL_USER, // safe fallback
+  to: email,
+  subject: `Your ComplyBot Quick Scan for ${url}`,
+  text: summary
+};
+    // Send the email with the summary
+    await transporter.sendMail(mailOptions);
+console.log(`✅ Summary emailed to ${email}`);
+    // Send the summary as response
 
     await transporter.sendMail({
       from: process.env.EMAIL_FROM,
