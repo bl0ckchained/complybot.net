@@ -11,8 +11,14 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+// Remove global body-parser
+// Use per-route parsing instead
+
+// Free scan route
+app.post("/scan", express.urlencoded({ extended: true }), async (req, res) => {
+  console.log("Incoming body:", req.body);
+  const { url, email } = req.body;
+
 app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Free scan

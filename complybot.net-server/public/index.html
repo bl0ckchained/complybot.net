@@ -55,7 +55,7 @@
             <li>PDF Compliance Report</li>
             <li>"ComplyBot Verified" badge</li>
           </ul>
-          <a href="#scan" class="cta-btn">Get Started</a>
+          <button class="cta-btn upgrade-btn">Get Started</button>
         </div>
 
         <div class="plan">
@@ -68,20 +68,20 @@
             <li>Remediation plan PDF</li>
             <li>Accessibility statement included</li>
           </ul>
-          <a href="#scan" class="cta-btn">Request Audit</a>
+          <button class="cta-btn upgrade-btn">Request Audit</button>
         </div>
 
         <div class="plan">
           <h3>Monthly Monitoring</h3>
           <p>Keep your site compliant long-term with monthly checks.</p>
-          <strong>$19/mo</strong>
+          <strong>$29/mo</strong>
           <ul>
             <li>Monthly re-scan</li>
             <li>Updated reports + alerts</li>
             <li>Priority email support</li>
             <li>Auto-refresh badge</li>
           </ul>
-          <a href="#scan" class="cta-btn">Subscribe</a>
+          <button class="cta-btn upgrade-btn">Subscribe</button>
         </div>
 
         <div class="plan">
@@ -116,6 +116,44 @@
   <footer>
     <p>&copy; 2025 ComplyBot.net | <a href="mailto:support@complybot.net">support@complybot.net</a></p>
   </footer>
+
+  <!-- ⚡ Stripe Checkout Trigger Script -->
+  <script>
+    // Save email + url on scan form submit
+    document.querySelector('form[action="/scan"]').addEventListener('submit', function (e) {
+      const url = document.querySelector('input[name="url"]').value;
+      const email = document.querySelector('input[name="email"]').value;
+      localStorage.setItem('url', url);
+      localStorage.setItem('email', email);
+    });
+
+    // Attach checkout upgrade handler to all upgrade buttons
+    document.querySelectorAll('.upgrade-btn').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const email = localStorage.getItem('email');
+        const url = localStorage.getItem('url');
+
+        if (!email || !url) {
+          alert('Please run a scan first from the homepage.');
+          return;
+        }
+
+        try {
+          const res = await fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, url })
+          });
+
+          const { url: checkoutUrl } = await res.json();
+          window.location.href = checkoutUrl;
+        } catch (err) {
+          alert("⚠️ Error starting checkout. Please try again.");
+          console.error(err);
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
