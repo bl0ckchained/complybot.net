@@ -165,6 +165,10 @@ app.get("/cancel.html", (req, res) => {
   res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
 });
 
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+});
+// ✅ Health Check    
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
