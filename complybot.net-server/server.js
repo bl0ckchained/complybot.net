@@ -65,6 +65,7 @@ app.post("/scan", async (req, res) => {
 // ✅ Stripe Checkout Session with Metadata
 app.post("/create-checkout-session", async (req, res) => {
   const { email, url } = req.body;
+  console.log(`🚀 Creating Stripe session for ${email} - ${url}`);
 
   if (!email || !url) {
     return res.status(400).send("Missing email or url");
