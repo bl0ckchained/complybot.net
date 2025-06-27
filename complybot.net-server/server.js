@@ -62,12 +62,19 @@ app.post("/scan", async (req, res) => {
   }
 });
 
-// ✅ Stripe Checkout Session
+// ✅ Stripe Checkout Session with Metadata
 app.post("/create-checkout-session", async (req, res) => {
+  const { email, url } = req.body;
+
+  if (!email || !url) {
+    return res.status(400).send("Missing email or url");
+  }
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+      metadata: { email, url },
       line_items: [{
         price_data: {
           currency: "usd",
@@ -90,14 +97,22 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-// ✅ Deliver Full Report if Paid
+// ✅ Deliver Full Report (uses Stripe metadata)
 app.post("/deliver-full-report", async (req, res) => {
-  const { email, session_id, url } = req.body;
+  const { session_id } = req.body;
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
+
     if (session.payment_status !== "paid") {
       return res.status(403).send("Payment not verified.");
+    }
+
+    const email = session.metadata?.email;
+    const url = session.metadata?.url;
+
+    if (!email || !url) {
+      return res.status(400).send("Missing metadata.");
     }
 
     const browser = await puppeteer.launch({
@@ -149,13 +164,11 @@ app.get("/success.html", (req, res) => {
     <h1>✅ Payment Successful</h1>
     <p>Your full report is being emailed...</p>
     <script>
-      const email = localStorage.getItem('email');
-      const url = localStorage.getItem('url');
       const session_id = new URLSearchParams(window.location.search).get('session_id');
       fetch('/deliver-full-report', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, url, session_id })
+        body: JSON.stringify({ session_id })
       });
     </script>
   `);
@@ -165,10 +178,11 @@ app.get("/cancel.html", (req, res) => {
   res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
 });
 
+// ✅ Serve Homepage
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
-// ✅ Health Check    
+
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
