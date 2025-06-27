@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const bodyParser = require("body-parser");
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -11,17 +10,11 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 app.use(cors());
-// Remove global body-parser
-// Use per-route parsing instead
-
-// Free scan route
-app.post("/scan", express.urlencoded({ extended: true }), async (req, res) => {
-  console.log("Incoming body:", req.body);
-  const { url, email } = req.body;
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ Free scan
+// ✅ Free Scan Route
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
   console.log(`🚀 Scanning ${url} for ${email}`);
