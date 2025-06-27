@@ -23,7 +23,7 @@ app.post("/scan", async (req, res) => {
   try {
     const browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox"],
+      args: ["--no-sandbox"]
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
@@ -31,36 +31,31 @@ app.post("/scan", async (req, res) => {
     const results = await page.evaluate(async () => await axe.run());
     await browser.close();
 
-    const summary =
-      `ComplyBot Scan Summary for ${url}\n\n` +
+    const summary = `ComplyBot Scan Summary for ${url}\n\n` +
       (results.violations.length === 0
         ? `🎉 No critical issues found.`
         : `⚠️ ${results.violations.length} accessibility issues found.`) +
       `\n\nUpgrade for $29 to receive a full report, fixes, certificate & more.`;
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.zoho.com", // 👈 hardcoded is better here to avoid .env typos
+      host: "smtp.zoho.com",
       port: 465,
       secure: true,
       auth: {
-        user: process.env.EMAIL_USER, // e.g., support@complybot.net
-        pass: process.env.EMAIL_PASS, // your Zoho app password
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER, // safe fallback
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: email,
       subject: `Your ComplyBot Quick Scan for ${url}`,
       text: summary,
     };
-    // Send the email with the summary
+
     await transporter.sendMail(mailOptions);
     console.log(`✅ Summary emailed to ${email}`);
-    // Send the summary as response
-
-
-    console.log(`✅ Summary sent to ${email}`);
     res.redirect("/results.html");
   } catch (err) {
     console.error("💥 Scan Error:", err);
@@ -74,42 +69,41 @@ app.post("/create-checkout-session", async (req, res) => {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      line_items: [
-        {
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: "ComplyBot Full Accessibility Fix Plan",
-              description: "Detailed report, fixes, cert, monitoring",
-            },
-            unit_amount: 2900,
+      line_items: [{
+        price_data: {
+          currency: "usd",
+          product_data: {
+            name: "ComplyBot Full Accessibility Fix Plan",
+            description: "Detailed report, fixes, cert, monitoring"
           },
-          quantity: 1,
+          unit_amount: 2900,
         },
-      ],
-      success_url:
-        "https://complybot.net/success.html?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "https://complybot.net/cancel.html",
+        quantity: 1
+      }],
+      success_url: "https://complybot.net/success.html?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: "https://complybot.net/cancel.html"
     });
+
     res.json({ url: session.url });
-  } catch (error) {
-    console.error(error);
+  } catch (err) {
+    console.error("💥 Stripe Error:", err);
     res.status(500).send("Stripe session creation failed.");
   }
 });
 
-// ✅ Deliver Full Report if paid
+// ✅ Deliver Full Report if Paid
 app.post("/deliver-full-report", async (req, res) => {
   const { email, session_id, url } = req.body;
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
-    if (session.payment_status !== "paid")
+    if (session.payment_status !== "paid") {
       return res.status(403).send("Payment not verified.");
+    }
 
     const browser = await puppeteer.launch({
       headless: true,
-      args: ["--no-sandbox"],
+      args: ["--no-sandbox"]
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
@@ -122,7 +116,7 @@ app.post("/deliver-full-report", async (req, res) => {
     }\n\n${JSON.stringify(results, null, 2)}`;
 
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
+      host: "smtp.zoho.com",
       port: 465,
       secure: true,
       auth: {
@@ -132,12 +126,13 @@ app.post("/deliver-full-report", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: process.env.EMAIL_FROM,
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: email,
       subject: `Your FULL Accessibility Report - ${url}`,
       text: fullReport,
     });
 
+    console.log(`✅ Full report sent to ${email}`);
     res.send("✅ Full report sent.");
   } catch (err) {
     console.error("💥 Full Report Error:", err);
@@ -145,7 +140,7 @@ app.post("/deliver-full-report", async (req, res) => {
   }
 });
 
-// ✅ Pages
+// ✅ Static Pages
 app.get("/results.html", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "results.html"));
 });
@@ -173,6 +168,6 @@ app.get("/cancel.html", (req, res) => {
 
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () =>
-  console.log(`🚀 Server live at http://localhost:${PORT}`)
-);
+app.listen(PORT, () => {
+  console.log(`🚀 Server live at http://localhost:${PORT}`);
+});
