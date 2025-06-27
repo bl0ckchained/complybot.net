@@ -99,7 +99,8 @@
 
     <section id="scan">
       <h2>Start Your Free Quick Scan</h2>
-      <form action="https://complybot.net/scan" method="POST">
+      <form action="/scan" method="POST">
+        <p>Enter your website URL and email to get started:</p>
         <input type="text" name="url" placeholder="https://yourwebsite.com" required autocomplete="url">
         <input type="email" name="email" placeholder="you@example.com" required autocomplete="email">
         <button type="submit" class="cta-btn">Run Free Scan</button>
@@ -119,41 +120,45 @@
 
   <!-- ⚡ Stripe Checkout Trigger Script -->
   <script>
-    // Save email + url on scan form submit
-    document.querySelector('form[action="/scan"]').addEventListener('submit', function (e) {
+  // Save email + url on scan form submit
+  const form = document.querySelector('form[action="/scan"]');
+  if (form) {
+    form.addEventListener('submit', function (e) {
       const url = document.querySelector('input[name="url"]').value;
       const email = document.querySelector('input[name="email"]').value;
       localStorage.setItem('url', url);
       localStorage.setItem('email', email);
     });
+  }
 
-    // Attach checkout upgrade handler to all upgrade buttons
-    document.querySelectorAll('.upgrade-btn').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const email = localStorage.getItem('email');
-        const url = localStorage.getItem('url');
+  // Attach checkout upgrade handler to all upgrade buttons
+  document.querySelectorAll('.upgrade-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const email = localStorage.getItem('email');
+      const url = localStorage.getItem('url');
 
-        if (!email || !url) {
-          alert('Please run a scan first from the homepage.');
-          return;
-        }
+      if (!email || !url) {
+        alert('Please run a scan first from the homepage.');
+        return;
+      }
 
-        try {
-          const res = await fetch('/create-checkout-session', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, url })
-          });
+      try {
+        const res = await fetch('/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, url })
+        });
 
-          const { url: checkoutUrl } = await res.json();
-          window.location.href = checkoutUrl;
-        } catch (err) {
-          alert("⚠️ Error starting checkout. Please try again.");
-          console.error(err);
-        }
-      });
+        const { url: checkoutUrl } = await res.json();
+        if (!checkoutUrl) throw new Error("Missing checkout URL from server");
+        window.location.href = checkoutUrl;
+      } catch (err) {
+        alert("⚠️ Error starting checkout. Please try again.");
+        console.error(err);
+      }
     });
-  </script>
+  });
+</script>
 
 </body>
 </html>
