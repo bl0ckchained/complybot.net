@@ -158,6 +158,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 
+app.get("/favicon.png", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "public", "favicon.png"));
+});
+
+
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
