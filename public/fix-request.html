@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Fix | ComplyBot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="fix-request-container" style="max-width: 600px; margin: 2rem auto; padding: 1rem;">
+    <h1>🛠️ Request a Fix Pack</h1>
+    <p>If you'd like us to fix your accessibility issues, fill out the form below and our team will review it right away.</p>
+
+    <form action="https://formspree.io/f/myzjlodd" method="POST">
+      <label>Your Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email Address</label>
+      <input type="email" name="email" required>
+
+      <label>Website URL</label>
+      <input type="url" name="url" required>
+
+      <label>Login Page (optional)</label>
+      <input type="url" name="login_url">
+
+      <label>CMS / Site Type</label>
+      <select name="platform" required>
+        <option value="">Select one</option>
+        <option value="WordPress">WordPress</option>
+        <option value="Wix">Wix</option>
+        <option value="Squarespace">Squarespace</option>
+        <option value="Custom HTML/CSS">Custom HTML/CSS</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Brief Notes (what you'd like fixed)</label>
+      <textarea name="notes" rows="4" placeholder="Feel free to tell us about any areas you know need help..."></textarea>
+
+      <label>Authorize us to access your site for fixing?</label>
+      <select name="authorization" required>
+        <option value="">Choose...</option>
+        <option value="Yes">Yes</option>
+        <option value="No - contact me first">No – contact me first</option>
+      </select>
+
+      <button type="submit" class="cta-btn" style="margin-top: 1rem;">Submit Request</button>
+    </form>
+  </main>
+</body>
+</html>
