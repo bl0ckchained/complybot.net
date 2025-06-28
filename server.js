@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // ✅ Free Scan Route
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
-  console.log(`🚀 Scanning ${url} for ${email}`);
+  console.log(`🚀 Free Scan: ${url} for ${email}`);
 
   try {
     const browser = await puppeteer.launch({
@@ -46,14 +46,13 @@ app.post("/scan", async (req, res) => {
       },
     });
 
-    const mailOptions = {
+    await transporter.sendMail({
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: email,
       subject: `Your ComplyBot Quick Scan for ${url}`,
       text: summary,
-    };
+    });
 
-    await transporter.sendMail(mailOptions);
     console.log(`✅ Summary emailed to ${email}`);
     res.redirect("/results.html");
   } catch (err) {
@@ -62,20 +61,14 @@ app.post("/scan", async (req, res) => {
   }
 });
 
-// ✅ Stripe Checkout Session with Metadata
+// ✅ Stripe Checkout (no URL/email required upfront)
 app.post("/create-checkout-session", async (req, res) => {
-  const { email, url } = req.body;
-  console.log(`🚀 Creating Stripe session for ${email} - ${url}`);
-
-  if (!email || !url) {
-    return res.status(400).send("Missing email or url");
-  }
+  console.log("💳 Creating checkout session...");
 
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      metadata: { email, url },
       line_items: [{
         price_data: {
           currency: "usd",
@@ -98,22 +91,15 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-// ✅ Deliver Full Report (uses Stripe metadata)
+// ✅ Full Report After Payment (Form Submission)
 app.post("/deliver-full-report", async (req, res) => {
-  const { session_id } = req.body;
+  const { session_id, email, url } = req.body;
+  console.log(`📩 Delivering full report for ${email} / ${url} (session: ${session_id})`);
 
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
-
     if (session.payment_status !== "paid") {
-      return res.status(403).send("Payment not verified.");
-    }
-
-    const email = session.metadata?.email;
-    const url = session.metadata?.url;
-
-    if (!email || !url) {
-      return res.status(400).send("Missing metadata.");
+      return res.status(403).send("❌ Payment not verified.");
     }
 
     const browser = await puppeteer.launch({
@@ -161,25 +147,13 @@ app.get("/results.html", (req, res) => {
 });
 
 app.get("/success.html", (req, res) => {
-  res.send(`
-    <h1>✅ Payment Successful</h1>
-    <p>Your full report is being emailed...</p>
-    <script>
-      const session_id = new URLSearchParams(window.location.search).get('session_id');
-      fetch('/deliver-full-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ session_id })
-      });
-    </script>
-  `);
+  res.sendFile(path.resolve(__dirname, "public", "success.html"));
 });
 
 app.get("/cancel.html", (req, res) => {
   res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
 });
 
-// ✅ Serve Homepage
 app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });

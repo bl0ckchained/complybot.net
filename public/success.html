@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ComplyBot - Payment Successful</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Success - ComplyBot</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.png" type="image/png">
-
 </head>
 <body>
-
-  <header>
-    <div class="logo-nav">
-      <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo">
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="help.html">Help Center</a>
-      </nav>
-    </div>
+  <main class="success-container">
     <h1>✅ Payment Successful</h1>
-    <p>Thank you for upgrading to ComplyBot Pro! Sending your full report now...</p>
-  </header>
+    <p>Thanks for upgrading! Just one more step…</p>
+    <p>To generate your full accessibility report, enter your website details below:</p>
 
-  <main>
-    <section id="report-status">
-      <p id="status">⏳ Sending full report...</p>
-    </section>
+    <form id="reportForm">
+      <input type="email" name="email" placeholder="you@example.com" required>
+      <input type="url" name="url" placeholder="https://yourwebsite.com" required>
+      <input type="hidden" name="session_id" id="session_id">
+      <button type="submit" class="cta-btn">Get My Full Report</button>
+    </form>
+
+    <p id="statusMessage" style="margin-top: 20px;"></p>
   </main>
 
-  <footer>
-    <p>&copy; 2025 ComplyBot.net | <a href="mailto:support@complybot.net">support@complybot.net</a></p>
-  </footer>
-
   <script>
-    const email = localStorage.getItem('email');
-    const url = localStorage.getItem('url');
-    const session_id = new URLSearchParams(window.location.search).get('session_id');
+    // Get Stripe session ID from URL
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("session_id").value = params.get("session_id");
 
-    if (email && url && session_id) {
-      fetch('/deliver-full-report', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, session_id, url })
-      })
-      .then(() => {
-        document.getElementById('status').textContent = `✅ Full report sent to ${email}`;
-      })
-      .catch(() => {
-        document.getElementById('status').textContent = '❌ Error sending full report. Please contact support.';
+    // Submit form to trigger full scan
+    document.getElementById("reportForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = e.target.email.value;
+      const url = e.target.url.value;
+      const session_id = e.target.session_id.value;
+
+      const res = await fetch("/deliver-full-report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, url, session_id })
       });
-    } else {
-      document.getElementById('status').textContent = '❌ Missing info. Please contact support.';
-    }
-  </script>
 
+      const message = document.getElementById("statusMessage");
+
+      if (res.ok) {
+        message.textContent = "✅ Your full report has been emailed!";
+      } else {
+        message.textContent = "❌ There was an error. Please try again or contact support.";
+      }
+    });
+  </script>
 </body>
 </html>
