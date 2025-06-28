@@ -14,6 +14,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
+// 🧠 Helper function to summarize issues in plain English
+function summarizeIssues(violations) {
+  if (!violations || violations.length === 0) {
+    return "✅ No major accessibility issues were found. Your site looks great!";
+  }
+
+  const summary = violations.map((v) => {
+    const nodeCount = v.nodes.length;
+    return `⚠️ ${v.help} (${nodeCount} instance${nodeCount > 1 ? 's' : ''}) — ${v.description}`;
+  });
+
+  return summary.join('\n');
+}
+
 // ✅ Free Scan Route
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
@@ -112,9 +126,28 @@ app.post("/deliver-full-report", async (req, res) => {
     const results = await page.evaluate(async () => await axe.run());
     await browser.close();
 
+    const plainSummary = summarizeIssues(results.violations);
+
     const fullReport = `ComplyBot FULL Report for ${url}\n\nIssues Found: ${
       results.violations.length
     }\n\n${JSON.stringify(results, null, 2)}`;
+
+    const emailBody = `
+Hi there,
+
+Thanks for using ComplyBot! Here’s a simplified summary of your full accessibility scan for ${url}:
+
+${plainSummary}
+
+📄 A full developer report is included below for technical review.
+
+Need help fixing these issues?
+Click below to request a Fix Pack:
+👉 https://complybot.net/fix-request.html
+
+Thank you,
+— The ComplyBot Team
+`;
 
     const transporter = nodemailer.createTransport({
       host: "smtp.zoho.com",
@@ -130,7 +163,7 @@ app.post("/deliver-full-report", async (req, res) => {
       from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
       to: email,
       subject: `Your FULL Accessibility Report - ${url}`,
-      text: fullReport,
+      text: `${emailBody}\n\n\n---\n\n${fullReport}`,
     });
 
     console.log(`✅ Full report sent to ${email}`);
@@ -161,7 +194,6 @@ app.get("/", (req, res) => {
 app.get("/favicon.png", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "favicon.png"));
 });
-
 
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
