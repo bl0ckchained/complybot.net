@@ -1,4 +1,8 @@
-/* Basic Reset & Brand Font */
+/* ✅ RESET & BASE STYLES */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -11,18 +15,17 @@ a {
   color: #007BFF;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
 
+/* ✅ HEADER */
 header {
   background: #000;
   color: #fff;
   text-align: center;
-  padding: 60px 20px;
+  padding: 60px 20px 40px;
 }
-
 .logo-nav {
   display: flex;
   justify-content: space-between;
@@ -30,28 +33,32 @@ header {
   max-width: 1000px;
   margin: 0 auto 20px auto;
 }
-
 .logo {
   height: 60px;
 }
-
 nav a {
   margin: 0 15px;
   color: #fff;
 }
 
+/* ✅ TYPOGRAPHY */
 h1 {
   font-size: 2.5rem;
 }
-
 h2 {
   text-align: center;
   margin-top: 50px;
   font-size: 2rem;
   color: #111;
 }
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
 
-.steps, .pricing-tiers {
+/* ✅ LAYOUTS */
+.steps,
+.pricing-tiers {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -59,38 +66,38 @@ h2 {
   max-width: 1000px;
   gap: 20px;
 }
-
-.step, .plan {
+.step,
+.plan {
   background: #fff;
   border: 1px solid #ddd;
   padding: 25px;
   border-radius: 10px;
   flex: 1 1 280px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease-in-out;
 }
-
-.plan:hover {
+.plan:hover,
+.step:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
+/* ✅ PLAN DETAILS */
 .plan ul {
   list-style: none;
   padding-left: 0;
   margin-top: 10px;
 }
-
 .plan ul li {
   padding: 6px 0;
   border-bottom: 1px solid #eee;
   font-size: 0.95rem;
 }
-
 .plan ul li:last-child {
   border-bottom: none;
 }
 
+/* ✅ BUTTONS */
 .cta-btn {
   display: inline-block;
   background: #28a745;
@@ -100,22 +107,22 @@ h2 {
   margin-top: 15px;
   font-weight: bold;
   transition: background 0.3s ease;
+  text-align: center;
 }
-
 .cta-btn:hover {
   background: #218838;
 }
 
+/* ✅ FORMS */
 form {
   max-width: 500px;
-  margin: 20px auto;
+  margin: 30px auto;
   text-align: center;
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
-
 form input {
   width: 100%;
   padding: 12px;
@@ -124,7 +131,6 @@ form input {
   border: 1px solid #ccc;
   font-size: 1rem;
 }
-
 form button {
   width: 100%;
   padding: 15px;
@@ -136,11 +142,11 @@ form button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 form button:hover {
   background-color: #218838;
 }
 
+/* ✅ TRUST & TESTIMONIALS */
 blockquote {
   max-width: 600px;
   margin: 30px auto;
@@ -150,14 +156,15 @@ blockquote {
   border-radius: 6px;
   font-style: italic;
   color: #444;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
 }
 
+/* ✅ BLOG */
 .blog-list {
   max-width: 800px;
   margin: 50px auto;
   padding: 0 20px;
 }
-
 .blog-post {
   background: #fff;
   border: 1px solid #ddd;
@@ -166,33 +173,230 @@ blockquote {
   padding: 20px;
   border-radius: 6px;
 }
-
 .blog-post h2 {
   margin-top: 0;
 }
-
 .blog-post .date {
   color: #888;
   font-size: 0.9em;
 }
 
-.blog-post a {
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.blog-post a:hover {
-  text-decoration: underline;
-}
-
+/* ✅ FOOTER */
 footer {
   background: #000;
   color: #fff;
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px;
   font-size: 0.9rem;
 }
 footer a {
   color: #fff;
   text-decoration: underline;
 }
+
+/* ✅ RESPONSIVENESS */
+@media (max-width: 768px) {
+  .logo-nav {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+  .steps,
+  .pricing-tiers {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width: 500px) {
+  header {
+    padding: 40px 20px;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .step,
+  .plan {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+}
+/* ✅ SCROLLBAR */
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background: #28a745;
+  border-radius: 4px;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #218838;
+}
+/* ✅ ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body {
+  animation: fadeIn 0.5s ease-in-out;
+}
+/* ✅ CUSTOM STYLES */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* ✅ FIX REQUEST PAGE */
+.fix-request-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.fix-request-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.fix-request-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.fix-request-container form {
+  display: flex;
+  flex-direction: column;
+}
+.fix-request-container form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.fix-request-container form input,
+.fix-request-container form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.fix-request-container form button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.fix-request-container form button:hover {
+  background: #218838;
+}
+/* ✅ SUCCESS PAGE */
+.success-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.success-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.success-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.success-container a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #28a745;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.success-container a:hover {
+  background: #218838;
+}
+/* ✅ RESULTS PAGE */
+.results-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.results-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.results-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.results-container .results {
+  margin-top: 20px;
+}
+.results-container .results h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.results-container .results ul {
+  list-style: none;
+  padding-left: 0;
+}
+.results-container .results ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+.results-container .results ul li:last-child {
+  border-bottom: none;
+}
+/* ✅ BLOG PAGE */
+.blog-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.blog-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.blog-container .blog-post {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+.blog-container .blog-post:last-child {
+  border-bottom: none;
+}
+.blog-container .blog-post h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.blog-container .blog-post .date {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+.blog-container .blog-post p {
+  margin-bottom: 15px;
+  color: #555;
+}
+.blog-container .blog-post a {
+  color: #007BFF;
+  text-decoration: none;
+}
+.blog-container .blog-post a:hover {
+  text-decoration: underline;
+}
+/* ✅ PRICING PAGE */
