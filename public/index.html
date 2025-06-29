@@ -14,12 +14,31 @@
     gtag('js', new Date());
     gtag('config', 'G-06FD4Z9W4E');
   </script>
+  <style>
+    .cta-btn {
+      background: #1e7e34; /* Improved contrast */
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      background: #155c25;
+    }
+  </style>
 </head>
 
 <body>
-  <div style="background-color: #f5f5f5; text-align: center; padding: 0.75rem; font-size: 1rem; font-weight: 500;">
-    🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
-  </div>
+  <section aria-label="Accessibility mission banner">
+    <div style="background-color: #f5f5f5; text-align: center; padding: 0.75rem; font-size: 1rem; font-weight: 500;">
+      🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
+    </div>
+  </section>
 
   <header>
     <div class="logo-nav">
@@ -33,7 +52,7 @@
     <h1>Fast, Affordable ADA Website Compliance</h1>
     <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29.</p>
     <p class="trust-callout">✅ No subscriptions required. Just pay for what you need.</p>
-    <a href="#scan" class="cta-btn">Run Free Scan</a>
+    <a href="#scan" class="cta-btn" aria-label="Scroll to free scan form">Run Free Scan</a>
   </header>
 
   <main>
@@ -67,7 +86,7 @@
             <li>Email summary report</li>
             <li>Quick-fix suggestions</li>
           </ul>
-          <button class="cta-btn upgrade-btn">Get Started</button>
+          <button class="cta-btn upgrade-btn" aria-label="Purchase Starter Scan for $29">Get Started</button>
         </div>
 
         <div class="plan">
@@ -80,7 +99,7 @@
             <li>Remediation plan</li>
             <li>“ComplyBot Verified” badge</li>
           </ul>
-          <button class="cta-btn upgrade-btn">Request Audit</button>
+          <button class="cta-btn upgrade-btn" aria-label="Purchase Full Audit for $99">Request Audit</button>
         </div>
 
         <div class="plan">
@@ -93,7 +112,7 @@
             <li>Priority support</li>
             <li>Badge auto-updates</li>
           </ul>
-          <button class="cta-btn upgrade-btn">Subscribe</button>
+          <button class="cta-btn upgrade-btn" aria-label="Subscribe to Monitoring for $29/month">Subscribe</button>
         </div>
 
         <div class="plan">
@@ -154,11 +173,15 @@
 
     <section id="scan">
       <h2>Start Your Free Accessibility Scan</h2>
-      <form action="/scan" method="POST">
+      <form action="/scan" method="POST" aria-label="Free Accessibility Scan Form">
         <p>Check your site in under 60 seconds:</p>
-        <input type="text" name="url" placeholder="https://yourwebsite.com" required autocomplete="url" />
-        <input type="email" name="email" placeholder="you@example.com" required autocomplete="email" />
-        <button type="submit" class="cta-btn">Run Free Scan</button>
+        <label for="url">Website URL</label>
+        <input type="url" id="url" name="url" placeholder="https://yourwebsite.com" required autocomplete="url" />
+
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+
+        <button type="submit" class="cta-btn" aria-label="Run free accessibility scan">Run Free Scan</button>
       </form>
     </section>
 
@@ -186,7 +209,7 @@
     </p>
     <p style="margin-top: 0.5rem">
       <a href="mailto:support@complybot.net">
-        <button class="cta-btn" style="font-size: 0.9rem; padding: 0.4rem 1rem">Contact Us</button>
+        <button class="cta-btn" style="font-size: 0.9rem; padding: 0.4rem 1rem" aria-label="Email support">Contact Us</button>
       </a>
     </p>
   </footer>
@@ -231,3 +254,16 @@
   </script>
 </body>
 </html>
+<!-- 
+ -->  <!-- <article class="blog-post">
+ -->
+<!--         <h2><a href="#">5 Common Web Accessibility Mistakes (And How to Avoid Them)</a></h2>
+ -->  <!--         <p class="date">Posted on July 1, 2025</p>
+ --><!--         <p>Learn the most common pitfalls in web accessibility and how to ensure your site meets WCAG standards.</p>
+ --><!--       </article>
+ -->  <!--     </section>
+ -->  <!--   </main>
+ -->  <!--   <footer>
+ -->  <!--     <p>&copy; 2025 ComplyBot.net | <a href="mailto:  
+
+  
