@@ -9,6 +9,7 @@ body {
   color: #333;
   background: #f9f9f9;
   line-height: 1.6;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 a {
@@ -100,7 +101,7 @@ h3 {
 /* ✅ BUTTONS */
 .cta-btn {
   display: inline-block;
-  background: #28a745;
+  background: #1e7e34; /* Improved contrast green */
   color: #fff;
   padding: 12px 30px;
   border-radius: 5px;
@@ -110,7 +111,7 @@ h3 {
   text-align: center;
 }
 .cta-btn:hover {
-  background: #218838;
+  background: #155c25;
 }
 
 /* ✅ FORMS */
@@ -134,7 +135,7 @@ form input {
 form button {
   width: 100%;
   padding: 15px;
-  background-color: #28a745;
+  background-color: #1e7e34;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -143,7 +144,7 @@ form button {
   transition: background 0.3s ease;
 }
 form button:hover {
-  background-color: #218838;
+  background-color: #155c25;
 }
 
 /* ✅ TRUST & TESTIMONIALS */
@@ -152,7 +153,7 @@ blockquote {
   margin: 30px auto;
   background: #fff;
   padding: 20px;
-  border-left: 5px solid #28a745;
+  border-left: 5px solid #1e7e34;
   border-radius: 6px;
   font-style: italic;
   color: #444;
@@ -168,7 +169,7 @@ blockquote {
 .blog-post {
   background: #fff;
   border: 1px solid #ddd;
-  border-left: 5px solid #28a745;
+  border-left: 5px solid #1e7e34;
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 6px;
@@ -220,17 +221,19 @@ footer a {
     margin-bottom: 20px;
   }
 }
+
 /* ✅ SCROLLBAR */
 body::-webkit-scrollbar {
   width: 8px;
 }
 body::-webkit-scrollbar-thumb {
-  background: #28a745;
+  background: #1e7e34;
   border-radius: 4px;
 }
 body::-webkit-scrollbar-thumb:hover {
-  background: #218838;
+  background: #155c25;
 }
+
 /* ✅ ANIMATIONS */
 @keyframes fadeIn {
   from {
@@ -240,15 +243,14 @@ body::-webkit-scrollbar-thumb:hover {
     opacity: 1;
   }
 }
-body {
-  animation: fadeIn 0.5s ease-in-out;
-}
+
 /* ✅ CUSTOM STYLES */
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
+
 /* ✅ FIX REQUEST PAGE */
 .fix-request-container {
   max-width: 600px;
@@ -282,7 +284,7 @@ body {
   border-radius: 5px;
 }
 .fix-request-container form button {
-  background: #28a745;
+  background: #1e7e34;
   color: #fff;
   border: none;
   padding: 12px;
@@ -291,8 +293,9 @@ body {
   font-size: 1rem;
 }
 .fix-request-container form button:hover {
-  background: #218838;
+  background: #155c25;
 }
+
 /* ✅ SUCCESS PAGE */
 .success-container {
   max-width: 600px;
@@ -315,14 +318,15 @@ body {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;
-  background: #28a745;
+  background: #1e7e34;
   color: #fff;
   border-radius: 5px;
   text-decoration: none;
 }
 .success-container a:hover {
-  background: #218838;
+  background: #155c25;
 }
+
 /* ✅ RESULTS PAGE */
 .results-container {
   max-width: 800px;
@@ -358,6 +362,7 @@ body {
 .results-container .results ul li:last-child {
   border-bottom: none;
 }
+
 /* ✅ BLOG PAGE */
 .blog-container {
   max-width: 800px;
@@ -399,4 +404,44 @@ body {
 .blog-container .blog-post a:hover {
   text-decoration: underline;
 }
-/* ✅ PRICING PAGE */
+/* ✅ CONTACT PAGE */
+.contact-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.contact-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.contact-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+}
+.contact-container form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.contact-container form input,
+.contact-container form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.contact-container form button {
+  background: #1e7e34;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}

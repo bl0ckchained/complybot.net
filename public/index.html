@@ -14,36 +14,17 @@
     gtag('js', new Date());
     gtag('config', 'G-06FD4Z9W4E');
   </script>
-  <style>
-    .cta-btn {
-      background: #1e7e34; /* Improved contrast */
-      color: #fff;
-      padding: 12px 30px;
-      border-radius: 5px;
-      font-weight: bold;
-      display: inline-block;
-      transition: background 0.3s ease;
-      text-align: center;
-      border: none;
-      cursor: pointer;
-    }
-    .cta-btn:hover {
-      background: #155c25;
-    }
-  </style>
 </head>
 
 <body>
-  <section aria-label="Accessibility mission banner">
-    <div style="background-color: #f5f5f5; text-align: center; padding: 0.75rem; font-size: 1rem; font-weight: 500;">
-      🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
-    </div>
-  </section>
+  <div style="background-color: #f5f5f5; text-align: center; padding: 0.75rem; font-size: 1rem; font-weight: 500;">
+    🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
+  </div>
 
-  <header>
+  <header role="banner">
     <div class="logo-nav">
       <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
-      <nav>
+      <nav role="navigation" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="blog.html">Blog</a>
         <a href="help.html">Help Center</a>
@@ -52,12 +33,12 @@
     <h1>Fast, Affordable ADA Website Compliance</h1>
     <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29.</p>
     <p class="trust-callout">✅ No subscriptions required. Just pay for what you need.</p>
-    <a href="#scan" class="cta-btn" aria-label="Scroll to free scan form">Run Free Scan</a>
+    <a href="#scan" class="cta-btn" role="button" aria-label="Start free scan now">Run Free Scan</a>
   </header>
 
-  <main>
-    <section id="how-it-works">
-      <h2>How ComplyBot Works</h2>
+  <main role="main">
+    <section id="how-it-works" aria-labelledby="how-heading">
+      <h2 id="how-heading">How ComplyBot Works</h2>
       <div class="steps">
         <div class="step">
           <h3>1️⃣ Quick Free Scan</h3>
@@ -74,10 +55,10 @@
       </div>
     </section>
 
-    <section id="pricing">
-      <h2>Simple, Transparent Pricing</h2>
+    <section id="pricing" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading">Simple, Transparent Pricing</h2>
       <div class="pricing-tiers">
-        <div class="plan">
+        <div class="plan" role="region" aria-label="Starter Scan plan">
           <h3>Starter Scan</h3>
           <p>Best for small businesses (up to 15 pages).</p>
           <strong>$29 one-time</strong>
@@ -86,10 +67,10 @@
             <li>Email summary report</li>
             <li>Quick-fix suggestions</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Purchase Starter Scan for $29">Get Started</button>
+          <button class="cta-btn upgrade-btn" aria-label="Purchase Starter Scan plan">Get Started</button>
         </div>
 
-        <div class="plan">
+        <div class="plan" role="region" aria-label="Full Audit plan">
           <h3>Full Audit</h3>
           <p>Best for agencies and site owners with 16–100 pages.</p>
           <strong>$99 one-time</strong>
@@ -99,10 +80,10 @@
             <li>Remediation plan</li>
             <li>“ComplyBot Verified” badge</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Purchase Full Audit for $99">Request Audit</button>
+          <button class="cta-btn upgrade-btn" aria-label="Purchase Full Audit plan">Request Audit</button>
         </div>
 
-        <div class="plan">
+        <div class="plan" role="region" aria-label="Monthly Monitoring plan">
           <h3>Monthly Monitoring</h3>
           <p>Peace of mind with weekly scans + alerts.</p>
           <strong>$29/mo</strong>
@@ -112,10 +93,10 @@
             <li>Priority support</li>
             <li>Badge auto-updates</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Subscribe to Monitoring for $29/month">Subscribe</button>
+          <button class="cta-btn upgrade-btn" aria-label="Subscribe to Monthly Monitoring plan">Subscribe</button>
         </div>
 
-        <div class="plan">
+        <div class="plan" role="region" aria-label="Add-on services">
           <h3>Add-Ons</h3>
           <p>Customize your compliance package:</p>
           <ul>
@@ -131,8 +112,8 @@
       </p>
     </section>
 
-    <section class="trust-badges" style="text-align: center; margin-top: 2rem">
-      <h2>Why Trust ComplyBot?</h2>
+    <section class="trust-badges" aria-labelledby="trust-heading" style="text-align: center; margin-top: 2rem">
+      <h2 id="trust-heading">Why Trust ComplyBot?</h2>
       <div class="badges" style="display: inline-block; text-align: left; margin-top: 1rem">
         <p>🔒 SSL Secure Checkout</p>
         <p>✅ 100+ Sites Scanned</p>
@@ -146,8 +127,8 @@
       </div>
     </section>
 
-    <section id="why-accessibility" style="text-align: center; padding: 3rem 1rem; background-color: #f8f8f8;">
-      <h2 style="font-size: 2rem;">Why Accessibility Matters 🧠</h2>
+    <section id="why-accessibility" aria-labelledby="why-heading" style="text-align: center; padding: 3rem 1rem; background-color: #f8f8f8;">
+      <h2 id="why-heading" style="font-size: 2rem;">Why Accessibility Matters 🧠</h2>
       <p style="max-width: 750px; margin: 0 auto 2rem;">
         Web accessibility isn’t just the right thing to do — it’s smart business. By making your site usable for everyone, you protect yourself legally, expand your audience, and build trust.
       </p>
@@ -171,22 +152,22 @@
       </div>
     </section>
 
-    <section id="scan">
-      <h2>Start Your Free Accessibility Scan</h2>
-      <form action="/scan" method="POST" aria-label="Free Accessibility Scan Form">
+    <section id="scan" aria-labelledby="scan-heading">
+      <h2 id="scan-heading">Start Your Free Accessibility Scan</h2>
+      <form action="/scan" method="POST" aria-label="Free scan form">
         <p>Check your site in under 60 seconds:</p>
         <label for="url">Website URL</label>
-        <input type="url" id="url" name="url" placeholder="https://yourwebsite.com" required autocomplete="url" />
+        <input type="url" id="url" name="url" placeholder="https://yourwebsite.com" required aria-required="true" />
 
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email" />
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required aria-required="true" />
 
-        <button type="submit" class="cta-btn" aria-label="Run free accessibility scan">Run Free Scan</button>
+        <button type="submit" class="cta-btn" aria-label="Submit free scan request">Run Free Scan</button>
       </form>
     </section>
 
-    <section id="testimonials">
-      <h2>What People Say</h2>
+    <section id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">What People Say</h2>
       <blockquote style="background: #f0f0f0; padding: 1rem; border-radius: 8px; margin: 1rem auto; max-width: 700px;">
         “ComplyBot saved my local bakery from a nasty ADA lawsuit. Worth every penny.” — <strong>Sarah K.</strong>
       </blockquote>
@@ -196,7 +177,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>
       &copy; 2025 <strong>ComplyBot.net</strong> | Made with
       <span style="color: #1e90ff">💙</span> in Michigan! |
@@ -209,7 +190,7 @@
     </p>
     <p style="margin-top: 0.5rem">
       <a href="mailto:support@complybot.net">
-        <button class="cta-btn" style="font-size: 0.9rem; padding: 0.4rem 1rem" aria-label="Email support">Contact Us</button>
+        <button class="cta-btn" style="font-size: 0.9rem; padding: 0.4rem 1rem" aria-label="Contact support">Contact Us</button>
       </a>
     </p>
   </footer>
@@ -254,16 +235,14 @@
   </script>
 </body>
 </html>
-<!-- 
- -->  <!-- <article class="blog-post">
+<!-- Compare this snippet from public/blog.html: -->
+<!--       <article class="blog-post">
  -->
-<!--         <h2><a href="#">5 Common Web Accessibility Mistakes (And How to Avoid Them)</a></h2>
- -->  <!--         <p class="date">Posted on July 1, 2025</p>
- --><!--         <p>Learn the most common pitfalls in web accessibility and how to ensure your site meets WCAG standards.</p>
- --><!--       </article>
- -->  <!--     </section>
- -->  <!--   </main>
- -->  <!--   <footer>
- -->  <!--     <p>&copy; 2025 ComplyBot.net | <a href="mailto:  
-
-  
+<!--         <h2><a href="#">The Ultimate Guide to ADA Compliance for Small Businesses</a></h2>
+ -->
+<!--         <p class="date">Posted on July 1, 2025</p>
+ -->
+<!--         <p>Learn everything you need to know about ADA compliance, from legal requirements to practical steps you can take today.</p>
+ -->
+<!--       </article>
+ -->
