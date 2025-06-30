@@ -67,7 +67,7 @@
             <li>Email summary report</li>
             <li>Quick-fix suggestions</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Purchase Starter Scan plan">Get Started</button>
+          <button type="button" class="cta-btn upgrade-btn" aria-label="Purchase Starter Scan plan">Get Started</button>
         </div>
 
         <div class="plan" role="region" aria-label="Full Audit plan">
@@ -80,7 +80,7 @@
             <li>Remediation plan</li>
             <li>“ComplyBot Verified” badge</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Purchase Full Audit plan">Request Audit</button>
+          <button type="button" class="cta-btn upgrade-btn" aria-label="Purchase Full Audit plan">Request Audit</button>
         </div>
 
         <div class="plan" role="region" aria-label="Monthly Monitoring plan">
@@ -93,7 +93,7 @@
             <li>Priority support</li>
             <li>Badge auto-updates</li>
           </ul>
-          <button class="cta-btn upgrade-btn" aria-label="Subscribe to Monthly Monitoring plan">Subscribe</button>
+          <button type="button" class="cta-btn upgrade-btn" aria-label="Subscribe to Monthly Monitoring plan">Subscribe</button>
         </div>
 
         <div class="plan" role="region" aria-label="Add-on services">
@@ -127,31 +127,6 @@
       </div>
     </section>
 
-    <section id="why-accessibility" aria-labelledby="why-heading" style="text-align: center; padding: 3rem 1rem; background-color: #f8f8f8;">
-      <h2 id="why-heading" style="font-size: 2rem;">Why Accessibility Matters 🧠</h2>
-      <p style="max-width: 750px; margin: 0 auto 2rem;">
-        Web accessibility isn’t just the right thing to do — it’s smart business. By making your site usable for everyone, you protect yourself legally, expand your audience, and build trust.
-      </p>
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;">
-        <div style="max-width: 300px;">
-          <h3>⚖️ Avoid Legal Risk</h3>
-          <p>Over <strong>4,500 ADA lawsuits</strong> were filed in 2023 for inaccessible websites.</p>
-        </div>
-        <div style="max-width: 300px;">
-          <h3>📈 Improve SEO</h3>
-          <p>Accessible sites are easier for search engines to understand — and rank higher.</p>
-        </div>
-        <div style="max-width: 300px;">
-          <h3>♿ Serve More Users</h3>
-          <p>Over <strong>1 billion people</strong> worldwide have disabilities. Don’t leave them behind.</p>
-        </div>
-        <div style="max-width: 300px;">
-          <h3>✅ Boost Reputation</h3>
-          <p>Show customers and partners your business is inclusive, ethical, and professional.</p>
-        </div>
-      </div>
-    </section>
-
     <section id="scan" aria-labelledby="scan-heading">
       <h2 id="scan-heading">Start Your Free Accessibility Scan</h2>
       <form action="/scan" method="POST" aria-label="Free scan form">
@@ -168,10 +143,10 @@
 
     <section id="testimonials" aria-labelledby="testimonials-heading">
       <h2 id="testimonials-heading">What People Say</h2>
-      <blockquote style="background: #f0f0f0; padding: 1rem; border-radius: 8px; margin: 1rem auto; max-width: 700px;">
+      <blockquote>
         “ComplyBot saved my local bakery from a nasty ADA lawsuit. Worth every penny.” — <strong>Sarah K.</strong>
       </blockquote>
-      <blockquote style="background: #f0f0f0; padding: 1rem; border-radius: 8px; margin: 1rem auto; max-width: 700px;">
+      <blockquote>
         “I love the simple pricing. We sleep better knowing we're covered.” — <strong>Mike D.</strong>
       </blockquote>
     </section>
@@ -196,53 +171,44 @@
   </footer>
 
   <script>
-    const form = document.querySelector('form[action="/scan"]');
-    if (form) {
-      form.addEventListener("submit", function (e) {
-        const url = document.querySelector('input[name="url"]').value;
-        const email = document.querySelector('input[name="email"]').value;
-        localStorage.setItem("url", url);
-        localStorage.setItem("email", email);
-      });
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector('form[action="/scan"]');
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          const url = document.querySelector('input[name="url"]').value;
+          const email = document.querySelector('input[name="email"]').value;
+          localStorage.setItem("url", url);
+          localStorage.setItem("email", email);
+        });
+      }
 
-    document.querySelectorAll(".upgrade-btn").forEach((btn) => {
-      btn.addEventListener("click", async () => {
-        const email = localStorage.getItem("email");
-        const url = localStorage.getItem("url");
+      document.querySelectorAll(".upgrade-btn").forEach((btn) => {
+        btn.addEventListener("click", async () => {
+          const email = localStorage.getItem("email");
+          const url = localStorage.getItem("url");
 
-        if (!email || !url) {
-          alert("Please run a scan first from the homepage.");
-          return;
-        }
+          if (!email || !url) {
+            alert("Please run a scan first from the homepage.");
+            return;
+          }
 
-        try {
-          const res = await fetch("/create-checkout-session", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, url }),
-          });
+          try {
+            const res = await fetch("/create-checkout-session", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, url }),
+            });
 
-          const { url: checkoutUrl } = await res.json();
-          if (!checkoutUrl) throw new Error("Missing checkout URL from server");
-          window.location.href = checkoutUrl;
-        } catch (err) {
-          alert("⚠️ Error starting checkout. Please try again.");
-          console.error(err);
-        }
+            const data = await res.json();
+            if (!data.url) throw new Error("Missing checkout URL from server");
+            window.location.href = data.url;
+          } catch (err) {
+            alert("⚠️ Error starting checkout. Please try again.");
+            console.error(err);
+          }
+        });
       });
     });
   </script>
 </body>
 </html>
-<!-- Compare this snippet from public/blog.html: -->
-<!--       <article class="blog-post">
- -->
-<!--         <h2><a href="#">The Ultimate Guide to ADA Compliance for Small Businesses</a></h2>
- -->
-<!--         <p class="date">Posted on July 1, 2025</p>
- -->
-<!--         <p>Learn everything you need to know about ADA compliance, from legal requirements to practical steps you can take today.</p>
- -->
-<!--       </article>
- -->
