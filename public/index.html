@@ -42,6 +42,19 @@
       background-color: #9b59b6;
       color: white;
     }
+    .spinning-globe {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 60px;
+      height: 60px;
+      animation: spin 10s linear infinite;
+      z-index: 2000;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
   <script>
@@ -53,8 +66,8 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
+  <img src="images/complybot_logo2.png" alt="" class="spinning-globe" />
   <div class="orbital-container" aria-hidden="true">
-    <img src="images/complybot_logo2.png" alt="" class="spinning-globe" />
     <div class="orbit-text orbit-1">Inclusion</div>
     <div class="orbit-text orbit-2">Accessible</div>
     <div class="orbit-text orbit-3">For All</div>
@@ -220,42 +233,37 @@
   </script>
 </body>
 </html>
+  <script>
+    // Get Stripe session ID from URL
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("session_id").value = params.get("session_id");
 
-  <main>
-    <section style="text-align: center; padding: 2rem 1rem;">
-      <h2>Who We Are</h2>
-      <p style="max-width: 750px; margin: 0 auto;">
-        ComplyBot.net is a mission-driven startup based in Michigan, built to help small business owners protect their websites 
-        and serve every visitor equally — including those with disabilities.
-      </p>
-      <p style="max-width: 750px; margin: 1rem auto;">
-        After learning firsthand how expensive and confusing accessibility compliance can be, we set out to build a tool that 
-        makes it easy, affordable, and fast to stay on the right side of the law — and do the right thing.
-      </p>
-    </section>
+    // Handle form submit
+    document.getElementById("reportForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const email = e.target.email.value;
+      const url = e.target.url.value;
+      const session_id = e.target.session_id.value;
+      const message = document.getElementById("statusMessage");
+      message.textContent = "⏳ Submitting… please wait.";
 
-    <section style="background-color: #f8f8f8; padding: 2rem 1rem; text-align: center;">
-      <h2>Why We Care</h2>
-      <p style="max-width: 750px; margin: 0 auto;">
-        Over 1 billion people around the world live with a disability. Many rely on assistive technologies like screen readers, 
-        keyboard navigation, or captions to interact with the web. Sadly, most websites still block or ignore them.
-      </p>
-      <p style="max-width: 750px; margin: 1rem auto;">
-        We believe web access is a civil right. ComplyBot helps eliminate the barriers — and helps businesses avoid costly 
-        lawsuits, bad press, and lost customers.
-      </p>
-    </section>
+      try {
+        const res = await fetch("/deliver-full-report", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, url, session_id })
+        });
 
-    <section style="text-align: center; padding: 2rem 1rem;">
-      <h2>Our Promise</h2>
-      <ul style="list-style: none; padding: 0; max-width: 750px; margin: 0 auto;">
-        <li>✅ Transparent, upfront pricing with no hidden fees</li>
-        <li>✅ Fast, automated scans and plain-English results</li>
-        <li>✅ Expert-level support when you need help</li>
-        <li>✅ Real humans behind the scenes — not a faceless agency</li>
-      </ul>
-      <p style="margin-top: 1.5rem;">
-        We're here to serve, protect, and empower. Questions? Feedback? Let’s talk.
-      </p>
-      <a href="mailto:  
-      
+        if (res.ok) {
+          message.textContent = "✅ Your full report has been emailed!";
+        } else {
+          message.textContent = "❌ There was an error. Please try again or contact support.";
+        }
+      } catch (err) {
+        message.textContent = "❌ There was an error. Please try again or contact support.";
+        console.error(err);
+      }
+    });
+  </script> 
+</body>
+</html>   
