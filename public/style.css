@@ -592,3 +592,100 @@ footer a:hover {
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+/* ✅ NAVBAR FIX */
+.navbar {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.navbar .logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: #1e7e34;
+  font-weight: bold;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar .nav-links li a {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.navbar .nav-links li a:hover {
+  background: #1e7e34;
+  color: #fff;
+}
+
+/* ✅ SPINNING GLOBE IMPROVEMENTS */
+.spinning-globe {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 60px;
+  height: 60px;
+  animation: spin 10s linear infinite;
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.spinning-globe:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.6);
+}
+
+/* ✅ ACCESSIBLE SKIP LINK */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1e7e34;
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
+}
+/* ✅ ORBITAL TEXT IMPROVEMENTS */
+.orbit-text {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #28a745;
+  text-shadow: 0 0 4px #fff;
+  transform-origin: 60px 60px;
+  animation: orbit 6s linear infinite;
+}
+.orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
+.orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
+.orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
+.orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; } 
+@keyframes orbit {
+  0%   { transform: rotate(0deg)   translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* ✅ CUSTOM STYLES */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
