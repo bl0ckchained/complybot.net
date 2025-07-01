@@ -444,4 +444,151 @@ body::-webkit-scrollbar-thumb:hover {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
+} 
+.contact-container form button:hover {
+  background: #155c25;
+}
+/* ✅ FOOTER STYLES */
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+} 
+footer a {
+  color: #fff;
+  text-decoration: underline;
+} 
+footer a:hover {
+  text-decoration: none;
+}
+/* ✅ ANIMATIONS */
+.orbital-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  height: 120px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.spinning-globe {
+  width: 100%;
+  animation: spin 20s linear infinite;
+}
+
+.orbit-text {
+  position: absolute;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #28a745;
+  text-shadow: 0 0 4px #fff;
+  transform-origin: 60px 60px;
+  animation: orbit 6s linear infinite;
+}
+
+.orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
+.orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
+.orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
+.orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
+
+@keyframes orbit {
+  0%   { transform: rotate(0deg)   translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+/* ✅ CUSTOM STYLES */
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+} 
+/* ✅ FIX REQUEST PAGE */
+.fix-request-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+} 
+.fix-request-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.fix-request-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.fix-request-container form {
+  display: flex;
+  flex-direction: column;
+}
+.fix-request-container form label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+.fix-request-container form input,
+.fix-request-container form textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.fix-request-container form button {
+  background: #1e7e34;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.fix-request-container form button:hover {
+  background: #155c25;
+}
+/* ✅ SUCCESS PAGE */
+.success-container {  
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.success-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.success-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+.success-container a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #1e7e34;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.success-container a:hover {
+  background: #155c25;
+}
+/* ✅ RESULTS PAGE */
+.results-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
