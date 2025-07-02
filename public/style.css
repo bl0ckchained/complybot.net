@@ -239,27 +239,16 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* ✅ ANIMATIONS */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-
-/* ✅ ACCESSIBLE SKIP LINK */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: #1e7e34;
-  color: white;
-  padding: 8px;
-  z-index: 10000;
-  transition: top 0.3s;
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
-.skip-link:focus {
-  top: 0;
+@keyframes orbit {
+  0%   { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
 }
 
 /* ✅ SPINNING GLOBE */
@@ -276,10 +265,6 @@ body::-webkit-scrollbar-thumb:hover {
 .spinning-globe:hover {
   transform: scale(1.1);
   box-shadow: 0 0 15px rgba(155, 89, 182, 0.6);
-}
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 /* ✅ ORBITAL TEXT */
@@ -306,9 +291,19 @@ body::-webkit-scrollbar-thumb:hover {
 .orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
 .orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
 
-@keyframes orbit {
-  0%   { transform: rotate(0deg)   translateX(40px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+/* ✅ ACCESSIBLE SKIP LINK */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1e7e34;
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  transition: top 0.3s;
+}
+.skip-link:focus {
+  top: 0;
 }
 
 /* ✅ CUSTOM MAIN CONTENT CONTAINER */
