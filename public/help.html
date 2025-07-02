@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help Center | ComplyBot.net</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <style>
+    .faq-item { margin-bottom: 1.5rem; }
+    .faq-question {
+      cursor: pointer;
+      background: #1e7e34;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      padding: 12px 16px;
+      background: #f0f0f0;
+      border-left: 4px solid #1e7e34;
+      display: none;
+      border-radius: 0 0 6px 6px;
+    }
+    .faq-question.open + .faq-answer {
+      display: block;
+    }
+    .faq-search {
+      max-width: 600px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .faq-search input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="logo-nav">
+      <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html" aria-current="page">Help Center</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+    <h1>Need Help? We’ve Got You Covered.</h1>
+    <p>Answers to common questions about accessibility scans, reports, billing, and more.</p>
+  </header>
+
+  <main role="main" class="main-content">
+    <div class="faq-search">
+      <input type="text" id="searchInput" placeholder="Search help topics...">
+    </div>
+
+    <section id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-question">❓ What is an ADA compliance scan? <span>+</span></div>
+        <div class="faq-answer">It's a quick test that checks your website for accessibility issues that may violate the Americans with Disabilities Act (ADA) and WCAG standards. Our scan highlights areas that need improvement.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">⚡ How fast is the scan? <span>+</span></div>
+        <div class="faq-answer">Most scans take under 60 seconds. You'll get an instant overview, and we email you a detailed report.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">💳 What happens after I purchase a plan? <span>+</span></div>
+        <div class="faq-answer">After purchase, you’ll be prompted to enter your website and email. Our system generates your full report and sends it via email within minutes. If you choose ongoing monitoring, scans happen weekly.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">📄 What’s included in the Full Audit? <span>+</span></div>
+        <div class="faq-answer">You’ll receive a detailed PDF report, remediation suggestions, a badge you can display on your site, and a certificate confirming compliance scan results.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">📞 Can I talk to a real person? <span>+</span></div>
+        <div class="faq-answer">Yes! Just email <a href="mailto:support@complybot.net">support@complybot.net</a> or message us on <a href="https://www.facebook.com/profile.php?id=61578074481949" target="_blank">Facebook</a>. We typically respond within 1 business day.</div>
+      </div>
+    </section>
+
+    <section style="margin-top: 3rem;">
+      <h2>Still Need Help?</h2>
+      <p>We’re happy to help with custom scans, enterprise inquiries, or special accessibility cases.</p>
+      <form action="mailto:support@complybot.net" method="POST" enctype="text/plain">
+        <label for="question">Your Question:</label><br>
+        <textarea id="question" name="question" rows="5" cols="60" required></textarea><br>
+        <button class="cta-btn" type="submit" style="margin-top: 1rem;">Submit Question</button>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      &copy; 2025 <strong>ComplyBot.net</strong> | Built in Michigan | 
+      <a href="privacy.html">Privacy Policy</a> | 
+      <a href="terms.html">Terms</a> | 
+      <a href="about.html">About</a>
+    </p>
+  </footer>
+
+  <script>
+    // FAQ toggle logic
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        question.classList.toggle('open');
+        question.nextElementSibling.classList.toggle('open');
+        const symbol = question.querySelector('span');
+        symbol.textContent = question.classList.contains('open') ? '-' : '+';
+      });
+    });
+
+    // FAQ search logic
+    document.getElementById('searchInput').addEventListener('input', function () {
+      const query = this.value.toLowerCase();
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
+<!-- This HTML file serves as the Help Center for ComplyBot.net, providing users with answers to frequently asked questions and a way to submit their own questions. It includes a search feature for easy navigation through the FAQs. -->
+<!-- The design is simple and user-friendly, ensuring accessibility and ease of use. -->
+<!-- The footer includes links to privacy policy, terms, and about page, ensuring compliance with web standards. -->
+<!-- The script at the bottom handles the FAQ toggle functionality and search feature, enhancing user interaction. -->
+<!-- The page is structured with semantic HTML elements for better accessibility and SEO. -->       
+ 
