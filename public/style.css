@@ -689,3 +689,70 @@ footer a:hover {
   margin: 0 auto;
   padding: 20px;
 }
+/* ✅ LOGO NAV FIX FOR HEADER */
+.logo-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.logo-nav .logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.75rem;
+  color: #1e7e34;
+  font-weight: 700;
+}
+
+.logo-nav nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.logo-nav nav a {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+.logo-nav nav a:hover,
+.logo-nav nav a:focus {
+  background-color: #1e7e34;
+  color: white;
+  outline: none;
+}
+/* ✅ SPINNING GLOBE IMPROVEMENTS */
+.spinning-globe {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  width: 60px;
+  height: 60px;
+  animation: spin 10s linear infinite;
+  z-index: 9999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.spinning-globe:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(155, 89, 182, 0.6);
+}
+/* ✅ ACCESSIBLE SKIP LINK */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1e7e34;
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  transition: top 0.3s;
+}

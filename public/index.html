@@ -30,13 +30,137 @@
 </head>
 
 <body>
-  <!-- Floating Spinning Logo -->
+  <!-- Floating Logo -->
   <img src="images/complybot_logo2.png" alt="Spinning ComplyBot Logo" class="spinning-globe" />
 
-  <!-- The rest of your original code follows -->
-  <!-- ✅ Keep your orbital container, banner, navbar, sections, etc. -->
+  <!-- Top Accessibility Banner -->
+  <div style="background-color: #f5f5f5; text-align: center; padding: 0.75rem; font-size: 1rem; font-weight: 500;">
+    🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
+  </div>
 
-  <!-- Existing script tag and body ending -->
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="logo">ComplyBot<span>.net</span></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="help.html">Help Center</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+  <div class="logo-nav">
+  <div class="logo">ComplyBot<span>.net</span></div>
+  <nav role="navigation" aria-label="Main">
+    <a href="index.html">Home</a>
+    <a href="blog.html">Blog</a>
+    <a href="help.html">Help Center</a>
+    <a href="about.html">About</a>
+  </nav>
+</div>
+  <div class="hero-image">
+    <img src="images/hero_image.png" alt="ComplyBot Hero Image" />
+
+  <!-- Hero Section -->
+  <header class="hero" role="banner">
+    <h1>Fast, Affordable ADA Website Compliance</h1>
+    <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29.</p>
+    <p class="trust-callout">✅ No subscriptions required. Just pay for what you need.</p>
+    <a href="#scan" class="cta-btn">Run Free Scan</a>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main" role="main">
+    <section id="how-it-works" aria-labelledby="how-heading">
+      <h2 id="how-heading">How ComplyBot Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1️⃣ Quick Free Scan</h3>
+          <p>Scan your site for ADA & WCAG issues in seconds.</p>
+        </div>
+        <div class="step">
+          <h3>2️⃣ Instant Fixes</h3>
+          <p>Our AI suggests one-click fixes to pass compliance checks.</p>
+        </div>
+        <div class="step">
+          <h3>3️⃣ Stay Protected</h3>
+          <p>Get your certificate & optional monitoring for peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" aria-labelledby="pricing-heading">
+      <h2 id="pricing-heading">Simple, Transparent Pricing</h2>
+      <div class="pricing-tiers">
+        <div class="plan" aria-label="Starter Scan plan">
+          <h3>Starter Scan</h3>
+          <strong>$29 one-time</strong>
+          <ul>
+            <li>Scan up to 15 pages</li>
+            <li>Email report</li>
+            <li>Fix suggestions</li>
+          </ul>
+          <button class="cta-btn upgrade-btn">Get Started</button>
+        </div>
+        <div class="plan" aria-label="Full Audit plan">
+          <h3>Full Audit</h3>
+          <strong>$99 one-time</strong>
+          <ul>
+            <li>Scan up to 100 pages</li>
+            <li>PDF report</li>
+            <li>Remediation plan</li>
+          </ul>
+          <button class="cta-btn upgrade-btn">Request Audit</button>
+        </div>
+        <div class="plan" aria-label="Monitoring plan">
+          <h3>Monitoring</h3>
+          <strong>$29/mo</strong>
+          <ul>
+            <li>Weekly scans</li>
+            <li>Alerts & updates</li>
+            <li>Badge auto-update</li>
+          </ul>
+          <button class="cta-btn upgrade-btn">Subscribe</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scan Form -->
+    <section id="scan" aria-labelledby="scan-heading">
+      <h2 id="scan-heading">Start Your Free Accessibility Scan</h2>
+      <form action="/scan" method="POST" aria-label="Free scan form">
+        <label for="url">Website URL</label>
+        <input type="url" id="url" name="url" required placeholder="https://example.com" />
+
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com" />
+
+        <button type="submit" class="cta-btn">Run Scan</button>
+      </form>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">What People Say</h2>
+      <blockquote>“ComplyBot saved my business from an ADA lawsuit. Totally worth it.” — <strong>Alex R.</strong></blockquote>
+      <blockquote>“I loved how fast and easy it was. Highly recommend!” — <strong>Linda S.</strong></blockquote>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About Us</h2>
+      <p>ComplyBot.net is here to make web accessibility easy and affordable. Whether you're a startup or a storefront, we’ll help you serve every visitor with dignity.</p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 <strong>ComplyBot.net</strong> | Made with 💙 in Michigan</p>
+    <p><a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms</a> | <a href="about.html">About</a></p>
+    <p><a href="mailto:support@complybot.net">Contact Support</a></p>
+  </footer>
+
+  <!-- Scan & Checkout Script -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.querySelector('form[action="/scan"]');
@@ -73,39 +197,6 @@
         });
       });
     });
-  </script>
-
-  <!-- Extra form submission script -->
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const sessionInput = document.getElementById("session_id");
-    if (sessionInput) sessionInput.value = params.get("session_id");
-
-    const reportForm = document.getElementById("reportForm");
-    if (reportForm) {
-      reportForm.addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const email = e.target.email.value;
-        const url = e.target.url.value;
-        const session_id = e.target.session_id.value;
-        const message = document.getElementById("statusMessage");
-        message.textContent = "⏳ Submitting… please wait.";
-
-        try {
-          const res = await fetch("/deliver-full-report", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, url, session_id })
-          });
-          message.textContent = res.ok
-            ? "✅ Your full report has been emailed!"
-            : "❌ There was an error. Please try again or contact support.";
-        } catch (err) {
-          message.textContent = "❌ There was an error. Please try again or contact support.";
-          console.error(err);
-        }
-      });
-    }
   </script>
 </body>
 </html>
