@@ -14,10 +14,52 @@
     gtag('js', new Date());
     gtag('config', 'G-06FD4Z9W4E');
   </script>
+  <style>
+    /* 🌍 Spinning Globe & Orbiting Words */
+    .orbital-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .spinning-globe {
+      width: 100%;
+      animation: spin 20s linear infinite;
+    }
+
+    .orbit-text {
+      position: absolute;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #28a745;
+      text-shadow: 0 0 4px #fff;
+      transform-origin: 60px 60px;
+      animation: orbit 6s linear infinite;
+    }
+
+    .orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
+    .orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
+    .orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
+    .orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
+
+    @keyframes orbit {
+      0%   { transform: rotate(0deg)   translateX(40px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- 🌍 Spinning Logo and Orbiting Words -->
+  <!-- 🌍 Visual Effect -->
   <div class="orbital-container" aria-hidden="true">
     <img src="images/complybot_logo2.png" alt="" class="spinning-globe" />
     <div class="orbit-text orbit-1">Inclusion</div>
@@ -190,7 +232,7 @@
     document.addEventListener("DOMContentLoaded", function () {
       const form = document.querySelector('form[action="/scan"]');
       if (form) {
-        form.addEventListener("submit", function () {
+        form.addEventListener("submit", function (e) {
           const url = document.querySelector('input[name="url"]').value;
           const email = document.querySelector('input[name="email"]').value;
           localStorage.setItem("url", url);
