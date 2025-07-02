@@ -257,9 +257,9 @@ body::-webkit-scrollbar-thumb:hover {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes spin-horizontal {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
 }
 @keyframes orbit {
   0%   { transform: rotate(0deg) translateX(30px) rotate(0deg); }
@@ -285,11 +285,20 @@ body::-webkit-scrollbar-thumb:hover {
   height: 100px;
   z-index: 1000;
   pointer-events: none;
+  perspective: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 50%;
+  
 }
 .spinning-globe {
   width: 100%;
   height: 100%;
-  animation: spin 10s linear infinite;
+  animation: spin-horizontal 20s linear infinite;
+  transform-style: preserve-3d;
+  transform-origin: center;
   opacity: 0.8;
 }
 .orbit-text {
