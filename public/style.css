@@ -535,3 +535,126 @@ body::-webkit-scrollbar-thumb:hover {
 .blog-post-content .comment-form {
   margin-top: 30px;
 }
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+.dark-mode header,
+.dark-mode nav,
+.dark-mode section,
+.dark-mode footer {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+button#darkModeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background: #eee;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+body.dark-mode button#darkModeToggle {
+  background: #444;
+  color: #fff;
+}
+button#darkModeToggle:hover {
+  background: #ddd;
+}
+body.dark-mode button#darkModeToggle:hover {
+  background: #555;
+}
+/* ✅ CUSTOM DARK MODE STYLES */
+.dark-mode a {
+  color: #1e7e34;
+}
+.dark-mode a:hover {
+  color: #155c25;
+}
+.dark-mode .cta-btn {
+  background: #1e7e34;
+  color: #fff;
+}
+.dark-mode .cta-btn:hover {
+  background: #155c25;
+}
+.dark-mode .step,
+.dark-mode .plan {
+  background: #2c2c2c;
+  border: 1px solid #444;
+  color: #f0f0f0;
+}
+.dark-mode .step:hover,
+.dark-mode .plan:hover {
+  background: #3c3c3c;
+  border-color: #555;
+}
+.dark-mode form {
+  background: #2c2c2c;
+  color: #f0f0f0;
+}
+.dark-mode form input,
+.dark-mode form button {  
+  background: #3c3c3c;
+  color: #f0f0f0;
+  border: 1px solid #555;
+}
+.dark-mode form input:focus,
+.dark-mode form button:focus {
+  border-color: #1e7e34;
+  outline: none;
+}
+.dark-mode blockquote {
+  background: #2c2c2c;
+  color: #f0f0f0;
+  border-left: 5px solid #1e7e34;
+}
+.dark-mode footer {
+  background: #1e1e1e;
+  color: #f0f0f0;
+}
+.dark-mode footer a {
+  color: #1e7e34;
+}
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #f5f5f5;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Mode Styles */
+body {
+  background-color: #ffffff;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Toggle Button */
+#darkModeToggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+}
+body.dark-mode #darkModeToggle {
+  color: #f5f5f5;
+}
+body #darkModeToggle {
+  color: #222;
+}
+/* Dark Mode Header */
+.dark-mode header {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
