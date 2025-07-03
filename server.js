@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const helmet = require("helmet"); // 🔩️ Add Helmet for security headers
+const helmet = require("helmet"); // 🛡️ Add Helmet for security headers
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -57,8 +57,6 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-
-
 
 // 🧠 Helper function to summarize issues in plain English
 function summarizeIssues(violations) {
@@ -247,10 +245,4 @@ app.listen(PORT, () => {
   console.log(`🚀 Server live at http://localhost:${PORT}`);
 });
 // 📝 Note: Ensure you have the necessary environment variables set in your .env file
-// // STRIPE_SECRET_KEY, EMAIL_USER, EMAIL_PASS, EMAIL_FROM
-// // Also, ensure you have the required packages installed: express, helmet, puppeteer,
-// // axe-core, nodemailer, path, cors, stripe
-// // Run with: node server.js
-// // Access the app at http://localhost:8080 
-// // Use the /scan endpoint to perform a free scan
-// // Use the /create-checkout-session endpoint to initiate a Stripe payment  
+// // STRIPE_SECRET_KEY, EMAIL_USER, EMAIL_PASS, EMAIL_FROM:
