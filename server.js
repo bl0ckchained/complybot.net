@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const helmet = require("helmet"); // 🛡️ Add Helmet for security headers
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -9,6 +10,7 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
+app.use(helmet()); // 🛡️ Apply Helmet middleware early for secure headers
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -37,6 +39,7 @@ app.post("/scan", async (req, res) => {
     const browser = await puppeteer.launch({
       headless: true,
       args: ["--no-sandbox"]
+
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
