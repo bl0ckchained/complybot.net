@@ -59,9 +59,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Basic Security Headers
-if (!userPref && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  document.body.classList.add("dark-mode");
-  toggleBtn.textContent = "🌜";
 }
 app.use(helmet({
   contentSecurityPolicy: false, // Disable CSP for now, we'll handle it manually
