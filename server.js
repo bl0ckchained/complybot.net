@@ -59,7 +59,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ✅ Basic Security Headers
-}
+
 app.use(helmet({
   contentSecurityPolicy: false, // Disable CSP for now, we'll handle it manually
   crossOriginEmbedderPolicy: false, // Disable COEP for now
