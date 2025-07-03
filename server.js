@@ -58,23 +58,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// ✅ Basic Security Headers
 
-app.use(helmet({
-  contentSecurityPolicy: false, // Disable CSP for now, we'll handle it manually
-  crossOriginEmbedderPolicy: false, // Disable COEP for now
-  crossOriginOpenerPolicy: false, // Disable COOP for now
-  crossOriginResourcePolicy: false, // Disable CORP for now
-  referrerPolicy: { policy: "no-referrer" }, // Set referrer policy
-  xssFilter: true, // Enable XSS filter
-  frameguard: { action: "deny" }, // Prevent clickjacking
-  noSniff: true, // Prevent MIME type sniffing
-  hsts: { maxAge: 31536000, includeSubDomains: true }, // Enable HSTS
-  dnsPrefetchControl: { allow: false }, // Disable DNS prefetching
-  expectCt: false, // Disable Expect-CT for now
-  hidePoweredBy: true, // Hide server technology
-  strictTransportSecurity: true, // Enforce HTTPS
-}));
 
 // 🧠 Helper function to summarize issues in plain English
 function summarizeIssues(violations) {
