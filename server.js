@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const helmet = require("helmet"); // 🛡️ Add Helmet for security headers
+const helmet = require("helmet"); // 🔩️ Add Helmet for security headers
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -10,7 +10,49 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-app.use(helmet()); // 🛡️ Apply Helmet middleware early for secure headers
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: [
+      "'self'",
+      "'unsafe-inline'",
+      "https://www.google.com",
+      "https://www.gstatic.com",
+      "https://www.googletagmanager.com",
+      "https://www.google-analytics.com",
+      "https://pagead2.googlesyndication.com",
+      "https://adservice.google.com"
+    ],
+    styleSrc: [
+      "'self'",
+      "'unsafe-inline'",
+      "https://fonts.googleapis.com"
+    ],
+    fontSrc: [
+      "'self'",
+      "https://fonts.gstatic.com"
+    ],
+    imgSrc: [
+      "'self'",
+      "data:",
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com",
+      "https://pagead2.googlesyndication.com"
+    ],
+    connectSrc: [
+      "'self'",
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com"
+    ],
+    frameSrc: [
+      "'self'",
+      "https://www.google.com",
+      "https://www.googletagmanager.com"
+    ],
+    objectSrc: ["'none'"],
+    upgradeInsecureRequests: [],
+  }
+}));
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -39,7 +81,6 @@ app.post("/scan", async (req, res) => {
     const browser = await puppeteer.launch({
       headless: true,
       args: ["--no-sandbox"]
-
     });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
@@ -203,3 +244,11 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`🚀 Server live at http://localhost:${PORT}`);
 });
+// 📝 Note: Ensure you have the necessary environment variables set in your .env file
+// // STRIPE_SECRET_KEY, EMAIL_USER, EMAIL_PASS, EMAIL_FROM
+// // Also, ensure you have the required packages installed: express, helmet, puppeteer,
+// // axe-core, nodemailer, path, cors, stripe
+// // Run with: node server.js
+// // Access the app at http://localhost:8080 
+// // Use the /scan endpoint to perform a free scan
+// // Use the /create-checkout-session endpoint to initiate a Stripe payment  
