@@ -1,0 +1,43 @@
+<%- include("partials/head", { title: "Help Center | ComplyBot.net" }) %>
+<body>
+  <%- include("partials/header") %>
+
+  <main role="main" class="main-content">
+    <div class="faq-search">
+      <input type="text" id="searchInput" placeholder="Search help topics..." />
+    </div>
+
+    <section id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">Frequently Asked Questions</h2>
+
+      <% const faqs = [
+        { q: "❓ What is an ADA compliance scan?", a: "It's a quick test that checks your website for accessibility issues that may violate the Americans with Disabilities Act (ADA) and WCAG standards. Our scan highlights areas that need improvement." },
+        { q: "⚡ How fast is the scan?", a: "Most scans take under 60 seconds. You'll get an instant overview, and we email you a detailed report." },
+        { q: "💳 What happens after I purchase a plan?", a: "After purchase, you’ll be prompted to enter your website and email. Our system generates your full report and sends it via email within minutes. If you choose ongoing monitoring, scans happen weekly." },
+        { q: "📄 What’s included in the Full Audit?", a: "You’ll receive a detailed PDF report, remediation suggestions, a badge you can display on your site, and a certificate confirming compliance scan results." },
+        { q: "📞 Can I talk to a real person?", a: 'Yes! Just email <a href="mailto:support@complybot.net">support@complybot.net</a> or message us on <a href="https://www.facebook.com/profile.php?id=61578074481949" target="_blank">Facebook</a>. We typically respond within 1 business day.' }
+      ]; %>
+
+      <% faqs.forEach(faq => { %>
+        <div class="faq-item">
+          <div class="faq-question"><%= faq.q %> <span>+</span></div>
+          <div class="faq-answer"><%- faq.a %></div>
+        </div>
+      <% }) %>
+    </section>
+
+    <section style="margin-top: 3rem;">
+      <h2>Still Need Help?</h2>
+      <p>We’re happy to help with custom scans, enterprise inquiries, or special accessibility cases.</p>
+      <form action="mailto:support@complybot.net" method="POST" enctype="text/plain">
+        <label for="question">Your Question:</label><br />
+        <textarea id="question" name="question" rows="5" cols="60" required></textarea><br />
+        <button class="cta-btn" type="submit" style="margin-top: 1rem;">Submit Question</button>
+      </form>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+  <%- include("partials/scripts") %>
+</body>
+</html>

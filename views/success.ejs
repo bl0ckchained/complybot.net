@@ -1,0 +1,124 @@
+<%- include("partials/head", { title: "Success - ComplyBot" }) %>
+<body>
+  <main class="success-container" role="main" aria-labelledby="payment-success-heading">
+    <h1 id="payment-success-heading">✅ Payment Successful</h1>
+    <p>Thanks for upgrading your protection with ComplyBot!</p>
+
+    <p><strong>Final Step:</strong> Tell us where to send your full accessibility report.</p>
+
+    <p style="margin-top: 10px; font-style: italic; color: #333;">
+      We're preparing your scan. You’ll receive a detailed email with your report and next steps within 24 hours.
+      Questions? <a href="mailto:support@complybot.net">support@complybot.net</a>
+    </p>
+
+    <form id="reportForm" aria-label="Full Report Request Form">
+      <label for="email">Your Email</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required aria-required="true" />
+
+      <label for="url">Website URL</label>
+      <input type="url" name="url" id="url" placeholder="https://yourwebsite.com" required aria-required="true" />
+
+      <input type="hidden" name="session_id" id="session_id" />
+
+      <button type="submit" class="cta-btn" aria-label="Submit and receive full ADA report">
+        Get My Full Report
+      </button>
+    </form>
+
+    <p id="statusMessage" style="margin-top: 20px;"></p>
+  </main>
+
+  <%- include("partials/scripts") %>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    .success-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 { color: #28a745; }
+    p { line-height: 1.6; }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    label { font-weight: bold; }
+    input[type="email"], input[type="url"] {
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    .cta-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .cta-btn:hover { background-color: #218838; }
+    #statusMessage { font-weight: bold; margin-top: 10px; }
+
+    @media (max-width: 600px) {
+      .success-container { padding: 15px; }
+      input[type="email"], input[type="url"] {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background-color: #121212; color: #e0e0e0; }
+      .success-container { background: #1e1e1e; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+      h1 { color: #76c7c0; }
+      .cta-btn { background-color: #76c7c0; }
+      .cta-btn:hover { background-color: #5ab6b2; }
+    }
+  </style>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("session_id").value = params.get("session_id");
+
+    document.getElementById("reportForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = e.target.email.value;
+      const url = e.target.url.value;
+      const session_id = e.target.session_id.value;
+      const message = document.getElementById("statusMessage");
+
+      message.textContent = "⏳ Submitting… please wait.";
+
+      try {
+        const res = await fetch("/deliver-full-report", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, url, session_id })
+        });
+
+        message.textContent = res.ok
+          ? "✅ Your full report has been emailed!"
+          : "❌ There was an error. Please try again or contact support.";
+      } catch (err) {
+        message.textContent = "❌ An unexpected error occurred. Please contact support.";
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- This file contains the success page for ComplyBot, displayed after a successful payment. -->
+<!-- This file is part of the ComplyBot website, which provides ADA compliance solutions. -->
+<!-- This file is licensed under the MIT License. -->
+<!-- This file is maintained by the ComplyBot team. -->

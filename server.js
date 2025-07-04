@@ -56,7 +56,7 @@ app.use(helmet.contentSecurityPolicy({
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use("/assets", express.static(path.join(__dirname, "public")));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 // ✅ Basic Security Headers
@@ -221,30 +221,63 @@ Thank you,
   }
 });
 
-// ✅ Static Pages
-app.get('/', (req, res) => {
-  res.render('index');
-});
-const helpPage = path.resolve(__dirname, "public", "help.html");
-app.get("/help.html", (req, res) => {
-  res.sendFile(helpPage);
-});
-app.get("/results.html", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "results.html"));
-});
-
-app.get("/success.html", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "success.html"));
-});
-
-app.get("/cancel.html", (req, res) => {
-  res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
-});
-
+// ✅ EJS Views
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "public", "index.html"));
+  res.render("index");
 });
 
+app.get("/about", (req, res) => {
+  res.render("about");
+});
+
+app.get("/blog", (req, res) => {
+  res.render("blog");
+});
+
+app.get("/help", (req, res) => {
+  res.render("help");
+});
+
+app.get("/results", (req, res) => {
+  res.render("results");
+});
+
+app.get("/success", (req, res) => {
+  res.render("success");
+});
+
+app.get("/checkout", (req, res) => {
+  res.render("checkout");
+});
+
+app.get("/fix-request", (req, res) => {
+  res.render("fix-request");
+});
+
+app.get("/privacy", (req, res) => {
+  res.render("privacy", { title: "Privacy Policy | ComplyBot" });
+});
+
+app.get("/terms", (req, res) => {
+  res.render("terms");
+});
+
+// ✅ Legacy Redirects (optional — forward old .html links to new routes)
+app.get("/help.html", (req, res) => res.redirect("/help"));
+app.get("/results.html", (req, res) => res.redirect("/results"));
+app.get("/success.html", (req, res) => res.redirect("/success"));
+app.get("/cancel.html", (req, res) => res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>"));
+app.get("/index.html", (req, res) => res.redirect("/"));
+app.get("/terms.html", (req, res) => res.redirect("/terms"));
+app.get("/blog.html", (req, res) => res.redirect("/blog"));
+app.get("/checkout.html", (req, res) => res.redirect("/checkout"));
+app.get("/fix-request.html", (req, res) => res.redirect("/fix-request"));
+// ✅ Static Assets
+
+
+
+
+// ✅ Favicon (still needed)
 app.get("/favicon.png", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "favicon.png"));
 });

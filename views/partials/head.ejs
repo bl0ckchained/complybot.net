@@ -2,15 +2,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ComplyBot - Affordable ADA Compliance</title>
+  <title><%= typeof title !== 'undefined' ? title : 'ComplyBot - Affordable ADA Compliance' %></title>
+  
+  <!-- 🌐 Styles & Favicon -->
   <link rel="stylesheet" href="/style.css" />
   <link rel="icon" href="/favicon.png" type="image/png" />
 
-  <!-- Google Analytics -->
-  <script
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"
-  ></script>
+  <!-- 📈 Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
@@ -20,6 +19,7 @@
     gtag("config", "G-06FD4Z9W4E");
   </script>
 
+  <!-- 🌍 Orbiting Globe Styles -->
   <style>
     .orbital-container {
       position: fixed;
@@ -43,41 +43,18 @@
       transform-origin: 60px 60px;
       animation: orbit 6s linear infinite;
     }
-    .orbit-1 {
-      animation-delay: 0s;
-      top: 0;
-      left: 50%;
-    }
-    .orbit-2 {
-      animation-delay: 1.5s;
-      top: 50%;
-      left: 100%;
-    }
-    .orbit-3 {
-      animation-delay: 3s;
-      top: 100%;
-      left: 50%;
-    }
-    .orbit-4 {
-      animation-delay: 4.5s;
-      top: 50%;
-      left: 0%;
-    }
+    .orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
+    .orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
+    .orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
+    .orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
+
     @keyframes orbit {
-      0% {
-        transform: rotate(0deg) translateX(40px) rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg) translateX(40px) rotate(-360deg);
-      }
+      0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+      100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
     }
     @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>

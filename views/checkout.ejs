@@ -1,0 +1,56 @@
+<%- include("partials/head") %>
+<body>
+  <%- include("partials/header") %>
+
+  <main>
+    <section id="checkout">
+      <div class="checkout-box">
+        <h2 id="plan-name">Plan: Full Fix & Certification</h2>
+        <p id="plan-desc">
+          Get a full audit, code-level fixes, compliance certificate, and
+          ongoing monitoring.
+        </p>
+        <p><strong>Total:</strong> <span id="plan-price">$29.00</span></p>
+        <button class="cta-btn" id="checkout-btn">Upgrade Now</button>
+        <p style="margin-top: 1rem; font-size: 0.9rem">
+          Your email and URL will be pulled from your last scan.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+  <%- include("partials/scripts") %>
+
+  <script>
+    const email = localStorage.getItem("email");
+    const url = localStorage.getItem("url");
+
+    if (!email || !url) {
+      document.getElementById("checkout").innerHTML =
+        "<p style='color: red;'>⚠️ Please run a free scan first to upgrade.</p>";
+    }
+
+    const checkoutBtn = document.getElementById("checkout-btn");
+    checkoutBtn?.addEventListener("click", async () => {
+      try {
+        const res = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, url }),
+        });
+
+        const { url: checkoutUrl } = await res.json();
+        window.location.href = checkoutUrl;
+      } catch (err) {
+        alert("⚠️ Failed to start checkout.");
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
+<!-- This file contains the checkout page for ComplyBot, allowing users to upgrade to a full compliance plan. -->
+<!-- This file is part of the ComplyBot website, which provides ADA compliance solutions. -->
+<!-- This file is licensed under the MIT License. -->
+<!-- This file is maintained by the ComplyBot team. -->
