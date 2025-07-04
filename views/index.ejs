@@ -1,0 +1,67 @@
+<!-- views/index.ejs -->
+<%- include("partials/head") %>
+<body>
+  <%- include("partials/globe") %>
+  <%- include("partials/header") %>
+
+  <main role="main">
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" aria-labelledby="how-heading">
+      <h2 id="how-heading">How ComplyBot Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1️⃣ Quick Free Scan</h3>
+          <p>Scan your site for ADA & WCAG issues in seconds.</p>
+        </div>
+        <div class="step">
+          <h3>2️⃣ Instant Fixes</h3>
+          <p>Our AI suggests one-click fixes to pass compliance checks.</p>
+        </div>
+        <div class="step">
+          <h3>3️⃣ Stay Protected</h3>
+          <p>Get your certificate & optional monitoring for peace of mind.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <%- include("partials/pricing") %>
+
+    <!-- TRUST -->
+    <%- include("partials/trust") %>
+
+    <!-- FREE SCAN FORM -->
+    <%- include("partials/scan-form") %>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">What People Say</h2>
+      <blockquote>
+        “ComplyBot saved my local bakery from a nasty ADA lawsuit. Worth every
+        penny.” — <strong>Sarah K.</strong>
+      </blockquote>
+      <blockquote>
+        “I love the simple pricing. We sleep better knowing we're covered.” —
+        <strong>Mike D.</strong>
+      </blockquote>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" aria-labelledby="about-heading" style="text-align: center; padding: 3rem 1rem">
+      <h2 id="about-heading">About Us</h2>
+      <p style="max-width: 750px; margin: 0 auto">
+        ComplyBot.net was founded to make web accessibility easy and
+        affordable for small businesses. We believe accessibility is a
+        right—not a luxury. 🧠💻
+      </p>
+      <p style="margin-top: 1rem">
+        Whether you're a startup or a storefront, we're here to help you avoid
+        lawsuits and serve every visitor with dignity.
+      </p>
+    </section>
+  </main>
+
+  <%- include("partials/footer") %>
+  <%- include("partials/scripts") %>
+</body>
+</html>

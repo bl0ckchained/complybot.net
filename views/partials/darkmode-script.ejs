@@ -1,0 +1,56 @@
+<!-- partials/scripts.ejs -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector('form[action="/scan"]');
+    if (form) {
+      form.addEventListener("submit", function () {
+        const url = document.querySelector('input[name="url"]').value;
+        const email = document.querySelector('input[name="email"]').value;
+        localStorage.setItem("url", url);
+        localStorage.setItem("email", email);
+      });
+    }
+
+    document.querySelectorAll(".upgrade-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const email = localStorage.getItem("email");
+        const url = localStorage.getItem("url");
+
+        if (!email || !url) {
+          alert("Please run a scan first from the homepage.");
+          return;
+        }
+
+        try {
+          const res = await fetch("/create-checkout-session", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, url }),
+          });
+
+          const data = await res.json();
+          if (!data.url) throw new Error("Missing checkout URL from server");
+          window.location.href = data.url;
+        } catch (err) {
+          alert("⚠️ Error starting checkout. Please try again.");
+          console.error(err);
+        }
+      });
+    });
+
+    const toggleBtn = document.getElementById("darkModeToggle");
+    const userPref = localStorage.getItem("darkMode");
+
+    if (userPref === "true") {
+      document.body.classList.add("dark-mode");
+      toggleBtn.textContent = "🌜";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      toggleBtn.textContent = isDark ? "🌜" : "🌞";
+      localStorage.setItem("darkMode", isDark);
+    });
+  });
+</script>

@@ -57,6 +57,9 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+// ✅ Basic Security Headers
 
 // 🧠 Helper function to summarize issues in plain English
 function summarizeIssues(violations) {
@@ -219,6 +222,13 @@ Thank you,
 });
 
 // ✅ Static Pages
+app.get('/', (req, res) => {
+  res.render('index');
+});
+const helpPage = path.resolve(__dirname, "public", "help.html");
+app.get("/help.html", (req, res) => {
+  res.sendFile(helpPage);
+});
 app.get("/results.html", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "results.html"));
 });
