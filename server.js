@@ -187,7 +187,17 @@ app.get("/favicon.png", (req, res) => {
 });
 
 // ✅ Start Server
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`🚀 Server live at http://localhost:${PORT}`);
+// ✅ Force HTTPS in production
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === "production" && req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
+  }
+  next();
 });
+
+// ✅ Start Server
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server live on port ${PORT}`);
+});
+// ✅ Health Check Endpoint
