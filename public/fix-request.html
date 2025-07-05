@@ -1,7 +1,22 @@
-<%- include("partials/head", { title: "Request a Fix | ComplyBot" }) %>
-<body>
-  <%- include("partials/header") %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Request a Fix | ComplyBot</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-06FD4Z9W4E');
+</script>
+</head>
+<body>
   <main class="fix-request-container" style="max-width: 600px; margin: 2rem auto; padding: 1rem;">
     <h1>🛠️ Request a Fix Pack</h1>
     <p>If you'd like us to fix your accessibility issues, fill out the form below and our team will review it right away.</p>
@@ -42,12 +57,5 @@
       <button type="submit" class="cta-btn" style="margin-top: 1rem;">Submit Request</button>
     </form>
   </main>
-
-  <%- include("partials/footer") %>
-  <%- include("partials/scripts") %>
 </body>
 </html>
-<!-- This file contains the fix request form for ComplyBot, allowing users to request accessibility fixes for their websites. -->
-<!-- This file is part of the ComplyBot website, which provides ADA compliance solutions. -->
-<!-- This file is licensed under the MIT License. -->
-<!-- This file is maintained by the ComplyBot team. -->

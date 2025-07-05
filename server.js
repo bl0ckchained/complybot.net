@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
-const helmet = require("helmet"); // 🛡️ Add Helmet for security headers
+const helmet = require("helmet");
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -56,35 +56,24 @@ app.use(helmet.contentSecurityPolicy({
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/assets", express.static(path.join(__dirname, "public")));
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-// ✅ Basic Security Headers
+app.use(express.static(path.join(__dirname, "public")));
 
-// 🧠 Helper function to summarize issues in plain English
 function summarizeIssues(violations) {
   if (!violations || violations.length === 0) {
     return "✅ No major accessibility issues were found. Your site looks great!";
   }
-
   const summary = violations.map((v) => {
     const nodeCount = v.nodes.length;
     return `⚠️ ${v.help} (${nodeCount} instance${nodeCount > 1 ? 's' : ''}) — ${v.description}`;
   });
-
   return summary.join('\n');
 }
 
-// ✅ Free Scan Route
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
   console.log(`🚀 Free Scan: ${url} for ${email}`);
-
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox"]
-    });
+    const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
     await page.addScriptTag({ path: require.resolve("axe-core") });
@@ -122,10 +111,8 @@ app.post("/scan", async (req, res) => {
   }
 });
 
-// ✅ Stripe Checkout (no URL/email required upfront)
 app.post("/create-checkout-session", async (req, res) => {
   console.log("💳 Creating checkout session...");
-
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -144,7 +131,6 @@ app.post("/create-checkout-session", async (req, res) => {
       success_url: "https://complybot.net/success.html?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: "https://complybot.net/cancel.html"
     });
-
     res.json({ url: session.url });
   } catch (err) {
     console.error("💥 Stripe Error:", err);
@@ -152,21 +138,16 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-// ✅ Full Report After Payment (Form Submission)
 app.post("/deliver-full-report", async (req, res) => {
   const { session_id, email, url } = req.body;
   console.log(`📩 Delivering full report for ${email} / ${url} (session: ${session_id})`);
-
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
     if (session.payment_status !== "paid") {
       return res.status(403).send("❌ Payment not verified.");
     }
 
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ["--no-sandbox"]
-    });
+    const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: "networkidle2", timeout: 0 });
     await page.addScriptTag({ path: require.resolve("axe-core") });
@@ -174,27 +155,8 @@ app.post("/deliver-full-report", async (req, res) => {
     await browser.close();
 
     const plainSummary = summarizeIssues(results.violations);
-
-    const fullReport = `ComplyBot FULL Report for ${url}\n\nIssues Found: ${
-      results.violations.length
-    }\n\n${JSON.stringify(results, null, 2)}`;
-
-    const emailBody = `
-Hi there,
-
-Thanks for using ComplyBot! Here’s a simplified summary of your full accessibility scan for ${url}:
-
-${plainSummary}
-
-📄 A full developer report is included below for technical review.
-
-Need help fixing these issues?
-Click below to request a Fix Pack:
-👉 https://complybot.net/fix-request.html
-
-Thank you,
-— The ComplyBot Team
-`;
+    const fullReport = `ComplyBot FULL Report for ${url}\n\nIssues Found: ${results.violations.length}\n\n${JSON.stringify(results, null, 2)}`;
+    const emailBody = `Hi there,\n\nThanks for using ComplyBot! Here’s a simplified summary of your full accessibility scan for ${url}:\n\n${plainSummary}\n\n📄 A full developer report is included below for technical review.\n\nNeed help fixing these issues?\nClick below to request a Fix Pack:\n👉 https://complybot.net/fix-request.html\n\nThank you,\n— The ComplyBot Team`;
 
     const transporter = nodemailer.createTransport({
       host: "smtp.zoho.com",
@@ -221,63 +183,18 @@ Thank you,
   }
 });
 
-// ✅ EJS Views
-app.get("/", (req, res) => {
-  res.render("index");
+// ✅ HTML Routes
+const htmlPages = ["index", "about", "blog", "help", "results", "success", "checkout", "fix-request", "privacy", "terms"];
+htmlPages.forEach(page => {
+  app.get(`/${page === "index" ? "" : page}`, (req, res) => {
+    res.sendFile(path.join(__dirname, "public", `${page}.html`));
+  });
 });
 
-app.get("/about", (req, res) => {
-  res.render("about");
-});
-
-app.get("/blog", (req, res) => {
-  res.render("blog");
-});
-
-app.get("/help", (req, res) => {
-  res.render("help");
-});
-
-app.get("/results", (req, res) => {
-  res.render("results");
-});
-
-app.get("/success", (req, res) => {
-  res.render("success");
-});
-
-app.get("/checkout", (req, res) => {
-  res.render("checkout");
-});
-
-app.get("/fix-request", (req, res) => {
-  res.render("fix-request");
-});
-
-app.get("/privacy", (req, res) => {
-  res.render("privacy", { title: "Privacy Policy | ComplyBot" });
-});
-
-app.get("/terms", (req, res) => {
-  res.render("terms");
-});
-
-// ✅ Legacy Redirects (optional — forward old .html links to new routes)
-app.get("/help.html", (req, res) => res.redirect("/help"));
-app.get("/results.html", (req, res) => res.redirect("/results"));
-app.get("/success.html", (req, res) => res.redirect("/success"));
+// ✅ Redirects
 app.get("/cancel.html", (req, res) => res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>"));
-app.get("/index.html", (req, res) => res.redirect("/"));
-app.get("/terms.html", (req, res) => res.redirect("/terms"));
-app.get("/blog.html", (req, res) => res.redirect("/blog"));
-app.get("/checkout.html", (req, res) => res.redirect("/checkout"));
-app.get("/fix-request.html", (req, res) => res.redirect("/fix-request"));
-// ✅ Static Assets
 
-
-
-
-// ✅ Favicon (still needed)
+// ✅ Favicon
 app.get("/favicon.png", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "favicon.png"));
 });
@@ -287,5 +204,3 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`🚀 Server live at http://localhost:${PORT}`);
 });
-// 📝 Note: Ensure you have the necessary environment variables set in your .env file
-// // STRIPE_SECRET_KEY, EMAIL_USER, EMAIL_PASS, EMAIL_FROM:

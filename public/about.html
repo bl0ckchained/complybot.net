@@ -1,16 +1,36 @@
-<%- include("partials/head", { title: "About Us | ComplyBot" }) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | ComplyBot</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-06FD4Z9W4E');
+  </script>
+</head>
+
 <body>
-  <%- include("partials/globe") %>
-  <%- include("partials/header") %>
+  <header>
+    <div class="logo-nav">
+      <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html">Help Center</a>
+      </nav>
+    </div>
+    <h1>Our Mission: Accessibility for All</h1>
+    <p style="margin-top: 1rem;">Why we built ComplyBot — and how we’re making the web better, one page at a time.</p>
+  </header>
 
   <main class="main-content">
-    <header style="text-align: center; padding: 2rem 1rem;">
-      <h1>Our Mission: Accessibility for All</h1>
-      <p style="margin-top: 1rem;">
-        Why we built ComplyBot — and how we’re making the web better, one page at a time.
-      </p>
-    </header>
-
     <section style="text-align: center; padding: 2rem 1rem;">
       <h2>Who We Are</h2>
       <p style="max-width: 750px; margin: 0 auto;">
@@ -50,7 +70,23 @@
     </section>
   </main>
 
-  <%- include("partials/footer") %>
-  <%- include("partials/scripts") %>
+  <footer>
+    <p>
+      &copy; 2025 <strong>ComplyBot.net</strong> | Made with
+      <span style="color: #1e90ff;">💙</span> in Michigan |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Service</a> |
+      <a href="index.html">Home</a>
+    </p>
+    <p style="margin-top: 0.25rem">
+      <a href="mailto:support@complybot.net" class="footer-contact-link">support@complybot.net</a>
+    </p>
+  </footer>
 </body>
 </html>
+<!--     const email = document.getElementById("email").value;
+ -->    
+<!--     const url = document.getElementById("url").value;
+ -->
+<!--     const sessionId = document.getElementById("session_id").value;
+ -->
