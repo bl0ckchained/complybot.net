@@ -9,26 +9,30 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // ✅ Serve static HTML & assets
 
+// 🧠 Summarize Accessibility Issues
 function summarizeIssues(violations) {
   if (!violations || violations.length === 0) {
     return "✅ No major accessibility issues were found. Your site looks great!";
   }
+
   const summary = violations.map((v) => {
     const nodeCount = v.nodes.length;
     return `⚠️ ${v.help} (${nodeCount} instance${nodeCount > 1 ? 's' : ''}) — ${v.description}`;
   });
+
   return summary.join('\n');
 }
 
+// ✅ Free Scan Route
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
   console.log(`🚀 Free Scan: ${url} for ${email}`);
+
   try {
     const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
     const page = await browser.newPage();
@@ -68,8 +72,8 @@ app.post("/scan", async (req, res) => {
   }
 });
 
+// ✅ Stripe Checkout (no email/URL upfront)
 app.post("/create-checkout-session", async (req, res) => {
-  console.log("💳 Creating checkout session...");
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
@@ -88,6 +92,7 @@ app.post("/create-checkout-session", async (req, res) => {
       success_url: "https://complybot.net/success.html?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: "https://complybot.net/cancel.html"
     });
+
     res.json({ url: session.url });
   } catch (err) {
     console.error("💥 Stripe Error:", err);
@@ -95,9 +100,11 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
+// ✅ Full Report After Payment
 app.post("/deliver-full-report", async (req, res) => {
   const { session_id, email, url } = req.body;
   console.log(`📩 Delivering full report for ${email} / ${url} (session: ${session_id})`);
+
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
     if (session.payment_status !== "paid") {
@@ -112,8 +119,26 @@ app.post("/deliver-full-report", async (req, res) => {
     await browser.close();
 
     const plainSummary = summarizeIssues(results.violations);
-    const fullReport = `ComplyBot FULL Report for ${url}\n\nIssues Found: ${results.violations.length}\n\n${JSON.stringify(results, null, 2)}`;
-    const emailBody = `Hi there,\n\nThanks for using ComplyBot! Here’s a simplified summary of your full accessibility scan for ${url}:\n\n${plainSummary}\n\n📄 A full developer report is included below for technical review.\n\nNeed help fixing these issues?\nClick below to request a Fix Pack:\n👉 https://complybot.net/fix-request.html\n\nThank you,\n— The ComplyBot Team`;
+    const fullReport = `ComplyBot FULL Report for ${url}\n\nIssues Found: ${
+      results.violations.length
+    }\n\n${JSON.stringify(results, null, 2)}`;
+
+    const emailBody = `
+Hi there,
+
+Thanks for using ComplyBot! Here’s a simplified summary of your full accessibility scan for ${url}:
+
+${plainSummary}
+
+📄 A full developer report is included below for technical review.
+
+Need help fixing these issues?
+Click below to request a Fix Pack:
+👉 https://complybot.net/fix-request.html
+
+Thank you,
+— The ComplyBot Team
+`;
 
     const transporter = nodemailer.createTransport({
       host: "smtp.zoho.com",
@@ -140,16 +165,10 @@ app.post("/deliver-full-report", async (req, res) => {
   }
 });
 
-// ✅ HTML Routes
-const htmlPages = ["index", "about", "blog", "help", "results", "success", "checkout", "fix-request", "privacy", "terms"];
-htmlPages.forEach(page => {
-  app.get(`/${page === "index" ? "" : page}`, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", `${page}.html`));
-  });
+// ✅ Redirects for legacy .html paths (optional)
+app.get("/cancel.html", (req, res) => {
+  res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
 });
-
-// ✅ Redirects
-app.get("/cancel.html", (req, res) => res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>"));
 
 // ✅ Favicon
 app.get("/favicon.png", (req, res) => {
