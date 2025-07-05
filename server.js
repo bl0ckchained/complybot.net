@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const express = require("express");
-const helmet = require("helmet");
 const puppeteer = require("puppeteer");
 const axeCore = require("axe-core");
 const nodemailer = require("nodemailer");
@@ -10,49 +9,7 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: [
-      "'self'",
-      "'unsafe-inline'",
-      "https://www.google.com",
-      "https://www.gstatic.com",
-      "https://www.googletagmanager.com",
-      "https://www.google-analytics.com",
-      "https://pagead2.googlesyndication.com",
-      "https://adservice.google.com"
-    ],
-    styleSrc: [
-      "'self'",
-      "'unsafe-inline'",
-      "https://fonts.googleapis.com"
-    ],
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com"
-    ],
-    imgSrc: [
-      "'self'",
-      "data:",
-      "https://www.google-analytics.com",
-      "https://www.googletagmanager.com",
-      "https://pagead2.googlesyndication.com"
-    ],
-    connectSrc: [
-      "'self'",
-      "https://www.google-analytics.com",
-      "https://www.googletagmanager.com"
-    ],
-    frameSrc: [
-      "'self'",
-      "https://www.google.com",
-      "https://www.googletagmanager.com"
-    ],
-    objectSrc: ["'none'"],
-    upgradeInsecureRequests: [],
-  }
-}));
+
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
