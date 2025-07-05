@@ -263,18 +263,38 @@
 
   <!-- 🧪 SCAN FORM -->
   <div class="container">
-    <section id="scan" aria-labelledby="scan-heading">
-      <h2 id="scan-heading">Start Your Free Accessibility Scan</h2>
-      <form action="/scan" method="POST" aria-label="Free scan form">
-        <p>Check your site in under 60 seconds:</p>
-        <label for="url">Website URL</label>
-        <input type="url" id="url" name="url" placeholder="https://yourwebsite.com" required />
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required />
-        <button type="submit" class="cta-btn" aria-label="Submit free scan request">Run Free Scan</button>
-      </form>
-    </section>
-  </div>
+  <section id="scan" aria-labelledby="scan-heading">
+    <h2 id="scan-heading">Start Your Free Accessibility Scan</h2>
+    <form action="/scan" method="POST" aria-label="Free scan form">
+      <p>Check your site in under 60 seconds:</p>
+
+      <label for="url">Website URL</label>
+      <input
+        type="url"
+        id="url"
+        name="url"
+        placeholder="https://yourwebsite.com"
+        required
+        autocomplete="url"
+      />
+
+      <label for="email">Email Address</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+        autocomplete="email"
+      />
+
+      <button type="submit" class="cta-btn" aria-label="Submit free scan request">
+        Run Free Scan
+      </button>
+    </form>
+  </section>
+</div>
+
 
   <!-- 👥 TESTIMONIALS -->
   <div class="container">
@@ -417,4 +437,4 @@
     </body>
 </html>
     <!-- Dark Mode CSS -->
-     
+
