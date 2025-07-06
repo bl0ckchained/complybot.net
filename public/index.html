@@ -9,11 +9,34 @@
     <link rel="icon" href="/favicon.png" type="image/png" />
 
     <!-- ✅ Security Meta Tags -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;">
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+        font-src 'self' https://fonts.gstatic.com;
+        connect-src 'self' https://www.google-analytics.com;
+        img-src 'self' data: https://www.google-analytics.com;
+        frame-src https://www.google.com;
+        object-src 'none';
+      "
+    />
+    <meta
+      http-equiv="Strict-Transport-Security"
+      content="max-age=31536000; includeSubDomains"
+    />
     <meta name="referrer" content="no-referrer" />
-    <meta name="permissions-policy" content="accelerometer=(), camera=(), geolocation=(), microphone=()" />
+    <meta
+      name="permissions-policy"
+      content="accelerometer=(), camera=(), geolocation=(), microphone=()"
+    />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="description" content="Fast, affordable ADA website compliance. Run a free
+scan, fix issues, and get your compliance certificate for as low as $29. No subscriptions required." />
+    <meta name="keywords" content="ADA compliance, WCAG, website accessibility, free scan, compliance certificate, affordable pricing, small business, accessibility tools" />
+    <meta name="author" content="ComplyBot.net" />
 
     <!-- ✅ Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
