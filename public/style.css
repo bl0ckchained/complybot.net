@@ -5,7 +5,7 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   color: #333;
   background: #f9f9f9;
   line-height: 1.6;
@@ -13,7 +13,7 @@ body {
 }
 
 a {
-  color: #007BFF;
+  color: #007bff;
   text-decoration: none;
 }
 a:hover {
@@ -49,12 +49,12 @@ header {
   margin-left: 12px;
   transition: background 0.3s ease, transform 0.2s ease;
   text-decoration: none;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 .logo-nav nav a:hover {
   background: linear-gradient(to right, #155c25, #0f3f1a);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ✅ TYPOGRAPHY */
@@ -254,21 +254,39 @@ body::-webkit-scrollbar-thumb:hover {
 
 /* ✅ ANIMATIONS */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes spin-horizontal {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
 @keyframes orbit {
-  0%   { transform: rotate(0deg) translateX(30px) rotate(0deg); }
-  100% { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+  0% {
+    transform: rotate(0deg) translateX(30px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(30px) rotate(-360deg);
+  }
 }
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ✅ PULSE ANIMATION */
@@ -291,7 +309,6 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   overflow: hidden;
   border-radius: 50%;
-
 }
 .spinning-globe {
   width: 100%;
@@ -310,10 +327,26 @@ body::-webkit-scrollbar-thumb:hover {
   transform-origin: 50% 50%;
   animation: orbit 6s linear infinite;
 }
-.orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
-.orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
-.orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
-.orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
+.orbit-1 {
+  animation-delay: 0s;
+  top: 0;
+  left: 50%;
+}
+.orbit-2 {
+  animation-delay: 1.5s;
+  top: 50%;
+  left: 100%;
+}
+.orbit-3 {
+  animation-delay: 3s;
+  top: 100%;
+  left: 50%;
+}
+.orbit-4 {
+  animation-delay: 4.5s;
+  top: 50%;
+  left: 0%;
+}
 
 /* ✅ ACCESSIBLE SKIP LINK */
 .skip-link {
@@ -502,7 +535,7 @@ body::-webkit-scrollbar-thumb:hover {
   font-size: 0.9rem;
   color: #888;
   margin-bottom: 20px;
-} 
+}
 /* ✅ CUSTOM BLOG POST COMMENTS */
 .blog-post-content .comments {
   margin-top: 30px;
@@ -600,7 +633,7 @@ body.dark-mode button#darkModeToggle:hover {
   color: #f0f0f0;
 }
 .dark-mode form input,
-.dark-mode form button {  
+.dark-mode form button {
   background: #3c3c3c;
   color: #f0f0f0;
   border: 1px solid #555;
@@ -663,4 +696,41 @@ body #darkModeToggle {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+}
+.secure-checkout {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  background: #e6f4ea;
+  border-left: 5px solid #28a745;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: #155724;
+}
+.secure-checkout a {
+  color: #155724;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.secure-checkout a:hover {
+  color: #0f3f1a;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .logo-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-nav nav {
+    margin-top: 10px;
+  }
+  .steps,
+  .pricing-tiers {
+    flex-direction: column;
+    align-items: center;
+  }
+  .step,
+  .plan {
+    width: 100%;
+    max-width: 400px;
+  }
 }
