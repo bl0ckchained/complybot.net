@@ -2,15 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ComplyBot - Affordable ADA Compliance</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="/favicon.png" type="image/png" />
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"
-    ></script>
+
+    <!-- ✅ Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="permissions-policy" content="accelerometer=(), camera=(), geolocation=(), microphone=()" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -19,8 +25,9 @@
       gtag("js", new Date());
       gtag("config", "G-06FD4Z9W4E");
     </script>
+
+    <!-- ✅ Spinning Globe Style -->
     <style>
-      /* 🌍 Spinning Globe & Orbiting Words */
       .orbital-container {
         position: fixed;
         top: 20px;
@@ -46,47 +53,23 @@
         animation: orbit 6s linear infinite;
       }
 
-      .orbit-1 {
-        animation-delay: 0s;
-        top: 0;
-        left: 50%;
-      }
-      .orbit-2 {
-        animation-delay: 1.5s;
-        top: 50%;
-        left: 100%;
-      }
-      .orbit-3 {
-        animation-delay: 3s;
-        top: 100%;
-        left: 50%;
-      }
-      .orbit-4 {
-        animation-delay: 4.5s;
-        top: 50%;
-        left: 0%;
-      }
+      .orbit-1 { animation-delay: 0s; top: 0; left: 50%; }
+      .orbit-2 { animation-delay: 1.5s; top: 50%; left: 100%; }
+      .orbit-3 { animation-delay: 3s; top: 100%; left: 50%; }
+      .orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
 
       @keyframes orbit {
-        0% {
-          transform: rotate(0deg) translateX(40px) rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg) translateX(40px) rotate(-360deg);
-        }
+        0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+        100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
       }
 
       @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
       }
     </style>
-
   </head>
+
 
   <body>
     <!-- 🌍 Visual Effect -->
