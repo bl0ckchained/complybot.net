@@ -1,194 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ComplyBot - Affordable ADA Compliance</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome -->
-<script src="https://kit.fontawesome.com/e2df7c2ee0.js" crossorigin="anonymous"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComplyBot - Affordable ADA Compliance</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.png" type="image/png" />
+  <script src="https://kit.fontawesome.com/e2df7c2ee0.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- 🌍 Visual Effect -->
+  <div class="orbital-container" aria-hidden="true">
+    <img src="images/awesome_earth.png" alt="Spinning digital earth" class="spinning-globe" />
+    <div class="orbit-text orbit-1">Inclusion</div>
+    <div class="orbit-text orbit-2">Accessible</div>
+    <div class="orbit-text orbit-3">For All</div>
+    <div class="orbit-text orbit-4">ADA Safe</div>
+  </div>
 
-    <link rel="icon" href="/favicon.png" type="image/png" />
+  <!-- 📢 Accessibility Banner -->
+  <div class="accessibility-banner">
+    🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure No Visitor Is Left Behind 🌍
+  </div>
 
-    <!-- ✅ Security Meta Tags -->
-    <meta
-      http-equiv="Content-Security-Policy"
-      content="
-        default-src 'self';
-        script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
-        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-        font-src 'self' https://fonts.gstatic.com;
-        connect-src 'self' https://www.google-analytics.com;
-        img-src 'self' data: https://www.google-analytics.com;
-        frame-src https://www.google.com;
-        object-src 'none';
-      "
-    />
-    <meta
-      http-equiv="Strict-Transport-Security"
-      content="max-age=31536000; includeSubDomains"
-    />
-    <meta name="referrer" content="no-referrer" />
-    <meta
-      name="permissions-policy"
-      content="accelerometer=(), camera=(), geolocation=(), microphone=()"
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#ffffff" />
-    <meta
-      name="description"
-      content="Fast, affordable ADA website compliance. Run a free
-scan, fix issues, and get your compliance certificate for as low as $29. No subscriptions required."
-    />
-    <meta
-      name="keywords"
-      content="ADA compliance, WCAG, website accessibility, free scan, compliance certificate, affordable pricing, small business, accessibility tools"
-    />
-    <meta name="author" content="ComplyBot.net" />
-
-    <!-- ✅ Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-06FD4Z9W4E");
-    </script>
-
-    <!-- ✅ Spinning Globe Style -->
-    <style>
-      .orbital-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 120px;
-        height: 120px;
-        z-index: 999;
-        pointer-events: none;
-      }
-
-      .spinning-globe {
-        width: 100%;
-        animation: spin 20s linear infinite;
-      }
-
-      .orbit-text {
-        position: absolute;
-        font-size: 0.75rem;
-        font-weight: bold;
-        color: #28a745;
-        text-shadow: 0 0 4px #fff;
-        transform-origin: 60px 60px;
-        animation: orbit 6s linear infinite;
-      }
-
-      .orbit-1 {
-        animation-delay: 0s;
-        top: 0;
-        left: 50%;
-      }
-      .orbit-2 {
-        animation-delay: 1.5s;
-        top: 50%;
-        left: 100%;
-      }
-      .orbit-3 {
-        animation-delay: 3s;
-        top: 100%;
-        left: 50%;
-      }
-      .orbit-4 {
-        animation-delay: 4.5s;
-        top: 50%;
-        left: 0%;
-      }
-
-      @keyframes orbit {
-        0% {
-          transform: rotate(0deg) translateX(40px) rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg) translateX(40px) rotate(-360deg);
-        }
-      }
-
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <!-- 🌍 Visual Effect -->
-    <div class="orbital-container" aria-hidden="true">
-      <img
-        src="images/awesome_earth.png"
-        alt="Spining digital earth"
-        class="spinning-globe"
-      />
-      <div class="orbit-text orbit-1">Inclusion</div>
-      <div class="orbit-text orbit-2">Accessible</div>
-      <div class="orbit-text orbit-3">For All</div>
-      <div class="orbit-text orbit-4">ADA Safe</div>
+  <!-- 🔝 Header -->
+  <header role="banner">
+    <div class="logo-nav">
+      <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="help.html">Help Center</a>
+        <a href="about.html">About</a>
+        <button id="darkModeToggle" aria-label="Toggle dark mode">🌞</button>
+        <a href="https://facebook.com/profile.php?id=61578074481949" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-square social-icon"></i>
+        </a>
+      </nav>
     </div>
-
-    <!-- 📢 Accessibility Banner -->
-    <div
-      style="
-        background-color: #f5f5f5;
-        text-align: center;
-        padding: 0.75rem;
-        font-size: 1rem;
-        font-weight: 500;
-      "
-    >
-      🌍 Equal Access for All — Protect Your Website from ADA Lawsuits & Ensure
-      No Visitor Is Left Behind 🌍
-    </div>
-
-    <!-- 🔝 Header -->
-    <header role="banner">
-      <div class="logo-nav">
-        <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
-        <nav role="navigation" aria-label="Main navigation">
-          <a href="index.html">Home</a>
-          <a href="blog.html">Blog</a>
-          <a href="help.html">Help Center</a>
-          <a href="about.html">About</a>
-          <button id="darkModeToggle" aria-label="Toggle dark mode">🌞</button>
-          <a href="https://facebook.com/profile.php?id=61578074481949" target="_blank" rel="noopener noreferrer">
-            <img src="/images/square-facebook-brandsS.svg" alt="Facebook" style="height: 24px; vertical-align: middle;" />
-            </a>
-
-        </nav>
-      </div>
-      <h1>Fast, Affordable ADA Website Compliance</h1>
-      <p>
-        Run a free scan. Fix everything. Get your compliance certificate for as
-        low as $29.
-      </p>
-      <p class="trust-callout">
-        ✅ No subscriptions required. Just pay for what you need.
-      </p>
-      <a
-        href="#scan"
-        class="cta-btn"
-        role="button"
-        aria-label="Start free scan now"
-        >Run Free Scan</a
-      >
-    </header>
+    <h1>Fast, Affordable ADA Website Compliance</h1>
+    <p>Run a free scan. Fix everything. Get your compliance certificate for as low as $29.</p>
+    <p class="trust-callout">✅ No subscriptions required. Just pay for what you need.</p>
+    <a href="#scan" class="cta-btn" role="button" aria-label="Start free scan now">Run Free Scan</a>
+  </header>
 
     <!-- 💼 Main Content -->
     <main role="main">
