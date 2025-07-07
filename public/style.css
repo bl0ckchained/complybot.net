@@ -7,6 +7,7 @@ body {
   background: #f9f9f9;
   line-height: 1.6;
 }
+
 a { color: #007bff; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -54,3 +55,26 @@ header {
   border-radius: 10px;
   flex: 1 1 280px;
 }
+
+.spinning-globe {
+  width: 100%;
+  height: 100%;
+  animation: spin-horizontal 30s linear infinite;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(40, 167, 69, 0.6);
+}
+@keyframes spin-horizontal {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+.orbital-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
