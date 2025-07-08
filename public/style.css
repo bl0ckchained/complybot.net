@@ -167,3 +167,149 @@ footer a:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   font-weight: 500;
 }
+
+/* 🌐 Global Reset & Layout */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #fdfdfd;
+  color: #222;
+}
+
+/* 🧩 Main Content Container */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* 📝 Section Styles */
+section {
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* 🧪 Scan Form */
+.scan-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.scan-section input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.scan-section button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.scan-section button:hover {
+  background-color: #006dd9;
+}
+
+/* 💳 Pricing Cards */
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.plan {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1.5rem;
+  width: 280px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.plan h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.plan p {
+  font-weight: bold;
+  color: #1e90ff;
+}
+
+.plan ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.75rem;
+}
+
+.plan ul li {
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+/* ✅ Trust Section */
+.trust-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.trust-logos img {
+  max-width: 100px;
+  height: auto;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.trust-logos img:hover {
+  filter: grayscale(0%);
+}
+
+/* 🙌 Testimonials */
+.testimonials-section blockquote {
+  font-style: italic;
+  margin: 1rem auto;
+  max-width: 600px;
+  color: #333;
+}
+
+/* 📱 Responsive Tweaks */
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .plan {
+    width: 90%;
+  }
+
+  .scan-section form {
+    width: 100%;
+  }
+}
