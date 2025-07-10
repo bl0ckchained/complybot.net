@@ -331,3 +331,50 @@ section p {
   transform: scale(1.05) rotate(2deg);
   opacity: 1;
 }
+
+/* 🌙 DARK MODE OVERRIDES */
+.dark-mode {
+  background-color: #111;
+  color: #f1f1f1;
+}
+
+.dark-mode a {
+  color: #80d0ff;
+}
+
+.dark-mode header,
+.dark-mode footer {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark-mode .logo-nav nav a {
+  background: #444;
+  color: #fff;
+}
+
+.dark-mode .plan,
+.dark-mode .step,
+.dark-mode .scan-section input,
+.dark-mode .scan-section button {
+  background-color: #222;
+  color: #fff;
+  border-color: #444;
+}
+
+.dark-mode .plan ul li {
+  border-bottom: 1px dashed #777;
+}
+
+.dark-mode .accessibility-banner {
+  background-color: #222;
+  color: #ccc;
+}
+
+.dark-mode .trust-logos img {
+  filter: brightness(0.8);
+}
+
+.dark-mode .testimonials-section blockquote {
+  color: #ccc;
+}
