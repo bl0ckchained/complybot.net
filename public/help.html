@@ -2,18 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Terms of Service | ComplyBot</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Center | ComplyBot</title>
+  <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="/favicon.png" type="image/png" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-    gtag("config", "G-06FD4Z9W4E");
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-06FD4Z9W4E');
   </script>
 </head>
 <body>
@@ -38,33 +36,34 @@
         </a>
       </nav>
     </div>
+    <h1>Help Center</h1>
+    <p>Common questions and answers about ComplyBot accessibility tools and services.</p>
   </header>
 
-  <!-- 📄 Main Content -->
-  <main class="content-container" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem">
-    <h1>Terms of Service</h1>
-    <p><strong>Last Updated:</strong> June 28, 2025</p>
+  <main class="help-center" style="max-width: 900px; margin: 3rem auto; padding: 0 1rem">
+    <input type="text" id="searchInput" placeholder="Search help articles..." style="width: 100%; padding: 0.75rem; margin-bottom: 2rem; border-radius: 6px; border: 1px solid #ccc" />
 
-    <h2>1. Overview</h2>
-    <p>ComplyBot is an ADA/WCAG accessibility analysis tool offering automated scans, reports, and optional remediation services.</p>
+    <section class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">+ What does ComplyBot scan for?</div>
+        <div class="faq-answer">We scan for WCAG 2.1 Level AA issues, including alt text, contrast errors, keyboard access, and ARIA violations.</div>
+      </div>
 
-    <h2>2. Use of Services</h2>
-    <p>By using this site, you agree to these terms. Do not misuse our tools or use them for illegal activity.</p>
+      <div class="faq-item">
+        <div class="faq-question">+ What happens after I run a free scan?</div>
+        <div class="faq-answer">You'll receive a summary of violations. You can then choose to purchase a full audit or remediation services.</div>
+      </div>
 
-    <h2>3. Accuracy and Limitations</h2>
-    <p>We strive for excellence, but some issues may go undetected or change after the scan. While our tools improve compliance, we cannot guarantee full legal immunity or total issue resolution.</p>
+      <div class="faq-item">
+        <div class="faq-question">+ Is ComplyBot ADA-compliant?</div>
+        <div class="faq-answer">ComplyBot helps you meet ADA and WCAG guidelines, but legal compliance depends on continuous accessibility efforts.</div>
+      </div>
 
-    <h2>4. Liability</h2>
-    <p>ComplyBot shall not be held liable for any damages, claims, or legal actions arising from the use or misuse of this service. All use is at your own risk.</p>
-
-    <h2>5. Refund Policy</h2>
-    <p>If you're not satisfied, contact us at <a href="mailto:support@complybot.net">support@complybot.net</a>. We offer a 7-day money-back guarantee on digital services.</p>
-
-    <h2>6. Modifications</h2>
-    <p>We may update these terms at any time. Your continued use means you accept the latest version.</p>
-
-    <h2>7. Contact</h2>
-    <p>For questions or legal inquiries, contact us at <a href="mailto:support@complybot.net">support@complybot.net</a>.</p>
+      <div class="faq-item">
+        <div class="faq-question">+ Do I need technical skills to use ComplyBot?</div>
+        <div class="faq-answer">Nope! Everything is built for non-tech users. We explain fixes in plain English and offer hands-on help if needed.</div>
+      </div>
+    </section>
   </main>
 
   <!-- 🐱 Floating Mascot Button -->
@@ -97,8 +96,7 @@
       </a>
     </p>
   </footer>
+
+  <script src="main.js" defer></script>
 </body>
 </html>
-<!-- End of terms.html -->
-<!-- This file is part of the ComplyBot.net project, which provides accessibility compliance solutions.
-     For more information, visit https://complybot.net or contact

@@ -5,26 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | ComplyBot</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
     <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-06FD4Z9W4E");
     </script>
   </head>
   <body>
-    <main
-      class="content-container"
-      style="max-width: 800px; margin: 3rem auto; padding: 0 1rem"
-    >
+    <!-- 🔝 Header -->
+    <header role="banner">
+      <div class="logo-nav">
+        <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
+        <nav role="navigation" aria-label="Main navigation">
+          <a href="a11y-n.html">Meet A11Y-N</a>
+          <a href="index.html">Home</a>
+          <a href="blog.html">Blog</a>
+          <a href="help.html">Help Center</a>
+          <a href="about.html">About</a>
+          <button id="darkModeToggle" aria-label="Toggle dark mode">🌞</button>
+          <a
+            href="https://facebook.com/profile.php?id=61578074481949"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <i class="fab fa-facebook-square social-icon"></i>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="content-container" style="max-width: 800px; margin: 3rem auto; padding: 0 1rem">
       <h1>Privacy Policy</h1>
       <p><strong>Last Updated:</strong> June 28, 2025</p>
 
@@ -57,9 +74,7 @@
       <ul>
         <li><strong>Stripe</strong> – for secure payment processing</li>
         <li><strong>Email providers</strong> – to deliver your scan reports</li>
-        <li>
-          <strong>Analytics tools</strong> – to improve our platform performance
-        </li>
+        <li><strong>Analytics tools</strong> – to improve our platform performance</li>
       </ul>
 
       <h2>4. Data Security</h2>
@@ -105,38 +120,40 @@
         <a href="mailto:support@complybot.net">support@complybot.net</a>
       </p>
     </main>
-    <img src="assets/a11y_n.png" alt="A11Y-N Mascot" class="mascot-float" />
-    <footer>
+
+    <!-- 🐱 Floating Mascot Button -->
+    <a href="a11y-n.html" title="Meet A11Y-N">
+      <img src="assets/a11y_n.png" alt="A11Y-N Mascot" class="mascot-float" />
+    </a>
+
+    <!-- ⚓ Footer -->
+    <footer role="contentinfo">
       <p>
-        &copy; 2025 ComplyBot.net | Made with
+        &copy; 2025 <strong>ComplyBot.net</strong> | Made with
         <span style="color: #1e90ff">💙</span> in Michigan! |
         <a href="privacy.html">Privacy Policy</a> |
         <a href="terms.html">Terms of Service</a> |
         <a href="about.html">About</a> |
-        <a href="https://www.facebook.com/profile.php?id=61578074481949"
-          >Facebook</a
-        >
+        <a href="https://facebook.com/profile.php?id=61578074481949" target="_blank">Facebook</a>
       </p>
       <p style="margin-top: 0.25rem">
-        <a href="mailto:
+        <a href="mailto:support@complybot.net" class="footer-contact-link">support@complybot.net</a>
       </p>
-        <a href="mailto:  
-        <button
-          class="cta-btn"
-          style="font-size: 0.9rem; padding: 0.4rem 1rem"
-          aria-label="Contact support"
-        >
-          Contact Us
-        </button>
-      </a>    
+      <p style="margin-top: 0.5rem">
+        <a href="mailto:support@complybot.net">
+          <button
+            class="cta-btn"
+            style="font-size: 0.9rem; padding: 0.4rem 1rem"
+            aria-label="Contact support"
+          >
+            Contact Us
+          </button>
+        </a>
+      </p>
+    </footer>
   </body>
 </html>
-<script>
-  // Google Analytics tracking code
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-06FD4Z9W4E");   
-</script>
+<!-- End of privacy.html -->
+<!-- This file is part of the ComplyBot.net project, which provides accessibility compliance solutions.
+     For more information, visit https://complybot.net or contact 
+     

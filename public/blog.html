@@ -6,16 +6,35 @@
   <title>ComplyBot Blog - ADA Compliance Tips & Guides</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png" type="image/png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-06FD4Z9W4E');
+  </script>
 </head>
 <body>
 
-  <header>
+  <!-- 🔝 Header -->
+  <header role="banner">
     <div class="logo-nav">
       <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo">
-      <nav>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="a11y-n.html">Meet A11Y-N</a>
         <a href="index.html">Home</a>
         <a href="blog.html">Blog</a>
         <a href="help.html">Help Center</a>
+        <a href="about.html">About</a>
+        <button id="darkModeToggle" aria-label="Toggle dark mode">🌞</button>
+        <a
+          href="https://facebook.com/profile.php?id=61578074481949"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook-square social-icon"></i>
+        </a>
       </nav>
     </div>
     <h1>ComplyBot Blog</h1>
@@ -41,68 +60,85 @@
         <p class="date">Posted on June 10, 2025</p>
         <p>See how real businesses use ComplyBot to scan, fix, and certify their websites — fast and affordably.</p>
       </article>
-      <div class="blog-post">
-  <h2>Why Web Accessibility Is Every Business Owner’s Responsibility</h2>
-  <p class="date">Posted on: June 28, 2025</p>
-  <p>
-    In a digital world where your website is your storefront, it's easy to overlook the millions of users who rely on accessibility features to interact with your content.
-  </p>
-  <p><strong>But here's the truth: accessibility isn't optional anymore.</strong></p>
 
-  <h3>🦾 What Is Web Accessibility?</h3>
-  <p>
-    Web accessibility ensures that everyone — including people with disabilities — can use your website.
-  </p>
-  <ul>
-    <li>People using screen readers can navigate your pages</li>
-    <li>Keyboard users can access interactive elements</li>
-    <li>Visually impaired users can read text with enough contrast</li>
-  </ul>
+      <article class="blog-post">
+        <h2>Why Web Accessibility Is Every Business Owner’s Responsibility</h2>
+        <p class="date">Posted on: June 28, 2025</p>
+        <p>In a digital world where your website is your storefront, it's easy to overlook the millions of users who rely on accessibility features to interact with your content.</p>
+        <p><strong>But here's the truth: accessibility isn't optional anymore.</strong></p>
 
-  <h3>⚠️ The Real Risks of Non-Compliance</h3>
-  <p>Over 4,500 ADA lawsuits were filed in 2023 for inaccessible websites.</p>
+        <h3>🦾 What Is Web Accessibility?</h3>
+        <p>Web accessibility ensures that everyone — including people with disabilities — can use your website.</p>
+        <ul>
+          <li>People using screen readers can navigate your pages</li>
+          <li>Keyboard users can access interactive elements</li>
+          <li>Visually impaired users can read text with enough contrast</li>
+        </ul>
 
-  <h3>✅ The Business Benefits</h3>
-  <ul>
-    <li><strong>Credibility</strong> — Show customers you care about *all* users</li>
-    <li><strong>SEO</strong> — Accessible sites rank better on Google</li>
-    <li><strong>Revenue</strong> — Tap into a wider, underserved market</li>
-  </ul>
+        <h3>⚠️ The Real Risks of Non-Compliance</h3>
+        <p>Over 4,500 ADA lawsuits were filed in 2023 for inaccessible websites.</p>
 
-  <h3>💡 How ComplyBot Helps</h3>
-  <p>
-    We scan your website, find issues, suggest fixes, and help you stay protected.
-  </p>
-  <blockquote>
-    Don’t wait for a lawsuit to learn why accessibility matters.  
-    Be proactive. Be inclusive. Be ComplyBot Verified.
-  </blockquote>
-</div>
+        <h3>✅ The Business Benefits</h3>
+        <ul>
+          <li><strong>Credibility</strong> — Show customers you care about <em>all</em> users</li>
+          <li><strong>SEO</strong> — Accessible sites rank better on Google</li>
+          <li><strong>Revenue</strong> — Tap into a wider, underserved market</li>
+        </ul>
 
+        <h3>💡 How ComplyBot Helps</h3>
+        <p>We scan your website, find issues, suggest fixes, and help you stay protected.</p>
+
+        <blockquote>
+          Don’t wait for a lawsuit to learn why accessibility matters.  
+          Be proactive. Be inclusive. Be ComplyBot Verified.
+        </blockquote>
+      </article>
     </section>
   </main>
 
-  <footer>
-    <p>&copy; 2025 ComplyBot.net | <a href="mailto:support@complybot.net">support@complybot.net</a></p>
+  <!-- 🐱 Floating Mascot Button -->
+  <a href="a11y-n.html" title="Meet A11Y-N">
+    <img src="assets/a11y_n.png" alt="A11Y-N Mascot" class="mascot-float" />
+  </a>
+
+  <!-- ⚓ Footer -->
+  <footer role="contentinfo">
+    <p>
+      &copy; 2025 <strong>ComplyBot.net</strong> | Made with
+      <span style="color: #1e90ff">💙</span> in Michigan! |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Service</a> |
+      <a href="about.html">About</a> |
+      <a href="https://facebook.com/profile.php?id=61578074481949" target="_blank">Facebook</a>
+    </p>
+    <p style="margin-top: 0.25rem">
+      <a href="mailto:support@complybot.net" class="footer-contact-link">support@complybot.net</a>
+    </p>
+    <p style="margin-top: 0.5rem">
+      <a href="mailto:support@complybot.net">
+        <button
+          class="cta-btn"
+          style="font-size: 0.9rem; padding: 0.4rem 1rem"
+          aria-label="Contact support"
+        >
+          Contact Us
+        </button>
+      </a>
+    </p>
   </footer>
 
-</body>
-</html>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-06FD4Z9W4E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-06FD4Z9W4E');
-</script>
-<script>
-  document.querySelectorAll('.blog-post a').forEach(link => {
-    link.addEventListener('click', function(event) {
-      gtag('event', 'click', {
-        'event_category': 'Blog Post',
-        'event_label': this.textContent,
-        'transport_type': 'beacon'
+  <script>
+    document.querySelectorAll('.blog-post a').forEach(link => {
+      link.addEventListener('click', function(event) {
+        gtag('event', 'click', {
+          'event_category': 'Blog Post',
+          'event_label': this.textContent,
+          'transport_type': 'beacon'
+        });
       });
     });
-  });
-</script>
+  </script>
+
+</body>
+
+</html>

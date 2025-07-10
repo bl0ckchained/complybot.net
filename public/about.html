@@ -1,5 +1,7 @@
-<!DOCTYPE html>
 <html lang="en">
+<!DOCTYPE html>
+<!-- This is the About Us page for ComplyBot.net, detailing our mission, values, and commitment to web accessibility. -->
+<!-- Created by ComplyBot Team -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -14,22 +16,36 @@
     gtag('js', new Date());
     gtag('config', 'G-06FD4Z9W4E');
   </script>
+
 </head>
 
 <body>
-  <header>
+  <!-- 🔝 Header -->
+  <header role="banner">
     <div class="logo-nav">
       <img src="images/new_logo.png" alt="ComplyBot Logo" class="logo" />
-      <nav>
+      <nav role="navigation" aria-label="Main navigation">
+        <a href="a11y-n.html">Meet A11Y-N</a>
         <a href="index.html">Home</a>
         <a href="blog.html">Blog</a>
         <a href="help.html">Help Center</a>
+        <a href="about.html">About</a>
+        <button id="darkModeToggle" aria-label="Toggle dark mode">🌞</button>
+        <a
+          href="https://facebook.com/profile.php?id=61578074481949"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook-square social-icon"></i>
+        </a>
       </nav>
     </div>
     <h1>Our Mission: Accessibility for All</h1>
     <p style="margin-top: 1rem;">Why we built ComplyBot — and how we’re making the web better, one page at a time.</p>
   </header>
 
+  <!-- 📄 Main Content -->
   <main class="main-content">
     <section style="text-align: center; padding: 2rem 1rem;">
       <h2>Who We Are</h2>
@@ -70,23 +86,38 @@
     </section>
   </main>
 
-  <footer>
+  <!-- ⚓ Footer -->
+  <footer role="contentinfo">
     <p>
       &copy; 2025 <strong>ComplyBot.net</strong> | Made with
       <span style="color: #1e90ff;">💙</span> in Michigan |
       <a href="privacy.html">Privacy Policy</a> |
       <a href="terms.html">Terms of Service</a> |
-      <a href="index.html">Home</a>
+      <a href="about.html">About</a> |
+      <a href="index.html">Home</a> |
+      <a href="https://facebook.com/profile.php?id=61578074481949" target="_blank">Facebook</a>
     </p>
     <p style="margin-top: 0.25rem">
       <a href="mailto:support@complybot.net" class="footer-contact-link">support@complybot.net</a>
     </p>
+    <p style="margin-top: 0.5rem">
+      <a href="mailto:support@complybot.net">
+        <button
+          class="cta-btn"
+          style="font-size: 0.9rem; padding: 0.4rem 1rem"
+          aria-label="Contact support"
+        >
+          Contact Us
+        </button>
+      </a>
+    </p>
   </footer>
+
+  <!-- 🐱 Floating Mascot Button -->
+  <a href="a11y-n.html" title="Meet A11Y-N">
+    <img src="assets/a11y_n.png" alt="A11Y-N Mascot" class="mascot-float" />
+  </a>
+
 </body>
+
 </html>
-<!--     const email = document.getElementById("email").value;
- -->    
-<!--     const url = document.getElementById("url").value;
- -->
-<!--     const sessionId = document.getElementById("session_id").value;
- -->
