@@ -1,16 +1,25 @@
 /* ✅ RESET & BASE */
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  color: #333;
-  background: #f9f9f9;
   line-height: 1.6;
+  background-color: #fdfdfd;
+  color: #222;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-a { color: #007bff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
 
 /* ✅ HEADER & NAV */
 header {
@@ -25,7 +34,7 @@ header {
   justify-content: space-between;
   align-items: center;
   max-width: 1000px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto 20px;
 }
 
 .logo {
@@ -42,41 +51,76 @@ header {
   margin-left: 12px;
 }
 
-/* ✅ MAIN STRUCTURE */
-.container {
+/* ✅ CTA BUTTON */
+.cta-button {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #0056b3;
+}
+
+/* ✅ MAIN CONTAINER */
+.container,
+main {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto;
   padding: 0 1rem;
-}
-
-.steps,
-.pricing-tiers {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.step,
-.plan {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 25px;
-  border-radius: 10px;
-  flex: 1 1 280px;
-}
-
-.accessibility-banner {
-  background-color: #f5f5f5;
+section {
   text-align: center;
-  padding: 0.75rem;
-  font-size: 1rem;
-  font-weight: 500;
-  max-width: 100%;
-  margin: 0 auto;
-  display: block;
 }
 
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+section p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* ✅ FORM STYLING */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #1e90ff;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #006dd9;
+}
 
 /* ✅ SPINNING EARTH */
 .orbital-container {
@@ -93,7 +137,6 @@ header {
   align-items: center;
 }
 
-/* 🌍 Earth Video */
 .earth-video {
   position: absolute;
   width: 100%;
@@ -119,129 +162,21 @@ header {
 .orbit-4 { animation-delay: 4.5s; top: 50%; left: 0%; }
 
 @keyframes orbit {
-  0%   { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+  0% { transform: rotate(0deg) translateX(40px) rotate(0deg); }
   100% { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
 }
 
-/* ✅ FOOTER */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1;
-}
-
-footer {
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 0.9rem;
-}
-
-footer a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-.secure-checkout {
-  margin: 2rem auto;
-  font-size: 0.9rem;
-  background: #e6f4ea;
-  border-left: 5px solid #28a745;
-  padding: 10px 15px;
-  border-radius: 6px;
-  color: #155724;
-  max-width: 600px;
-  text-align: center;
-}
-.secure-checkout {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  font-weight: 500;
-}
-
-/* 🌐 Global Reset & Layout */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #fdfdfd;
-  color: #222;
-}
-
-/* 🧩 Main Content Container */
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-/* 📝 Section Styles */
-section {
-  text-align: center;
-}
-
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-section p {
-  font-size: 1rem;
-  color: #555;
-}
-
-/* 🧪 Scan Form */
-.scan-section form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.scan-section input {
-  padding: 0.6rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.scan-section button {
-  background-color: #1e90ff;
-  color: white;
-  border: none;
-  padding: 0.6rem;
-  font-size: 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.scan-section button:hover {
-  background-color: #006dd9;
-}
-
-/* 💳 Pricing Cards */
+/* ✅ PLAN & PRICING CARDS */
+.pricing-tiers,
 .pricing-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
   justify-content: center;
+  gap: 20px;
 }
 
 .plan {
-  background: #ffffff;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 1.5rem;
@@ -271,7 +206,16 @@ section p {
   border-bottom: 1px dashed #ccc;
 }
 
-/* ✅ Trust Section */
+/* ✅ ACCESSIBILITY BANNER */
+.accessibility-banner {
+  background-color: #f5f5f5;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* ✅ TRUST LOGOS */
 .trust-logos {
   display: flex;
   flex-wrap: wrap;
@@ -291,7 +235,7 @@ section p {
   filter: grayscale(0%);
 }
 
-/* 🙌 Testimonials */
+/* ✅ TESTIMONIALS */
 .testimonials-section blockquote {
   font-style: italic;
   margin: 1rem auto;
@@ -299,21 +243,40 @@ section p {
   color: #333;
 }
 
-/* 📱 Responsive Tweaks */
-@media (max-width: 768px) {
-  section h2 {
-    font-size: 1.5rem;
-  }
-
-  .plan {
-    width: 90%;
-  }
-
-  .scan-section form {
-    width: 100%;
-  }
+/* ✅ FOOTER */
+footer {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
 }
 
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ SECURE CHECKOUT BOX */
+.secure-checkout {
+  margin: 2rem auto;
+  font-size: 0.9rem;
+  background: #e6f4ea;
+  border-left: 5px solid #28a745;
+  padding: 10px 15px;
+  border-radius: 6px;
+  color: #155724;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-weight: 500;
+}
+
+/* ✅ FLOATING MASCOT */
 .mascot-float {
   position: fixed;
   bottom: 20px;
@@ -321,7 +284,7 @@ section p {
   width: 60px;
   max-height: 60px;
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 9999;
   transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.9;
@@ -332,7 +295,7 @@ section p {
   opacity: 1;
 }
 
-/* 🌙 DARK MODE OVERRIDES */
+/* ✅ DARK MODE */
 .dark-mode {
   background-color: #111;
   color: #f1f1f1;
@@ -355,8 +318,8 @@ section p {
 
 .dark-mode .plan,
 .dark-mode .step,
-.dark-mode .scan-section input,
-.dark-mode .scan-section button {
+.dark-mode input,
+.dark-mode button {
   background-color: #222;
   color: #fff;
   border-color: #444;
@@ -378,3 +341,241 @@ section p {
 .dark-mode .testimonials-section blockquote {
   color: #ccc;
 }
+
+/* ✅ RESPONSIVE */
+@media (max-width: 768px) {
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  .plan {
+    width: 90%;
+  }
+
+  form {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  header {
+    padding: 40px 20px;
+  }
+
+  .logo-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo-nav nav a {
+    margin: 10px 0;
+  }
+
+  .mascot-float {
+    width: 50px;
+    height: 50px;
+  }
+}
+/* ✅ ANIMATIONS */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-10px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes flash {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideRight {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes zoomIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes zoomOut {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+@keyframes flip {
+  from {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  to {
+    transform: perspective(1000px) rotateY(180deg);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes fadeInRight {
+  from {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes pulseGrow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
