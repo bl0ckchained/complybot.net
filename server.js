@@ -194,6 +194,14 @@ app.use((req, res, next) => {
   }
   next();
 });
+const path = require("path");
+
+// Serve main static files
+app.use(express.static(path.join(__dirname, "public")));
+
+// ✅ Serve /coach route
+app.use('/coach', express.static(path.join(__dirname, 'public/coach')));
+
 
 // ✅ Start Server
 const PORT = process.env.PORT || 8080;
