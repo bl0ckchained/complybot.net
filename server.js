@@ -9,41 +9,44 @@ const cors = require("cors");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
+
+// ✅ Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, "public"))); // ✅ Serve static HTML & assets
+
+// ✅ Force HTTPS in production
 app.use((req, res, next) => {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect('https://' + req.headers.host + req.url);
+  if (process.env.NODE_ENV === "production" && req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(`https://${req.headers.host}${req.url}`);
   }
   next();
 });
 
-// ✅ Serve Static HTML Pages
+// ✅ Serve static assets
+app.use(express.static(path.join(__dirname, "public")));
+app.use('/coach', express.static(path.join(__dirname, 'public/coach')));
+
+// ✅ Root Route
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// 🧠 Summarize Accessibility Issues
+// 🔎 Accessibility Summary Helper
 function summarizeIssues(violations) {
   if (!violations || violations.length === 0) {
     return "✅ No major accessibility issues were found. Your site looks great!";
   }
 
-  const summary = violations.map((v) => {
+  return violations.map((v) => {
     const nodeCount = v.nodes.length;
     return `⚠️ ${v.help} (${nodeCount} instance${nodeCount > 1 ? 's' : ''}) — ${v.description}`;
-  });
-
-  return summary.join('\n');
+  }).join('\n');
 }
 
-// ✅ Free Scan Route
+// ✅ Free Scan
 app.post("/scan", async (req, res) => {
   const { url, email } = req.body;
-  console.log(`🚀 Free Scan: ${url} for ${email}`);
-
   try {
     const browser = await puppeteer.launch({ headless: true, args: ["--no-sandbox"] });
     const page = await browser.newPage();
@@ -75,7 +78,6 @@ app.post("/scan", async (req, res) => {
       text: summary,
     });
 
-    console.log(`✅ Summary emailed to ${email}`);
     res.redirect("/results.html");
   } catch (err) {
     console.error("💥 Scan Error:", err);
@@ -83,7 +85,7 @@ app.post("/scan", async (req, res) => {
   }
 });
 
-// ✅ Stripe Checkout (no email/URL upfront)
+// ✅ Stripe Payment Handler
 app.post("/create-checkout-session", async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
@@ -111,11 +113,9 @@ app.post("/create-checkout-session", async (req, res) => {
   }
 });
 
-// ✅ Full Report After Payment
+// ✅ Full Report Route
 app.post("/deliver-full-report", async (req, res) => {
   const { session_id, email, url } = req.body;
-  console.log(`📩 Delivering full report for ${email} / ${url} (session: ${session_id})`);
-
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
     if (session.payment_status !== "paid") {
@@ -144,7 +144,6 @@ ${plainSummary}
 📄 A full developer report is included below for technical review.
 
 Need help fixing these issues?
-Click below to request a Fix Pack:
 👉 https://complybot.net/fix-request.html
 
 Thank you,
@@ -168,7 +167,6 @@ Thank you,
       text: `${emailBody}\n\n\n---\n\n${fullReport}`,
     });
 
-    console.log(`✅ Full report sent to ${email}`);
     res.send("✅ Full report sent.");
   } catch (err) {
     console.error("💥 Full Report Error:", err);
@@ -176,36 +174,17 @@ Thank you,
   }
 });
 
-// ✅ Redirects for legacy .html paths (optional)
+// ✅ Cancel & Favicon
 app.get("/cancel.html", (req, res) => {
   res.send("<h1>❌ Payment Cancelled</h1><p>You can try again anytime.</p>");
 });
 
-// ✅ Favicon
 app.get("/favicon.png", (req, res) => {
   res.sendFile(path.resolve(__dirname, "public", "favicon.png"));
 });
 
-// ✅ Start Server
-// ✅ Force HTTPS in production
-app.use((req, res, next) => {
-  if (process.env.NODE_ENV === "production" && req.headers["x-forwarded-proto"] !== "https") {
-    return res.redirect(`https://${req.headers.host}${req.url}`);
-  }
-  next();
-});
-const path = require("path");
-
-// Serve main static files
-app.use(express.static(path.join(__dirname, "public")));
-
-// ✅ Serve /coach route
-app.use('/coach', express.static(path.join(__dirname, 'public/coach')));
-
-
-// ✅ Start Server
+// ✅ Launch Server
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`🚀 Server live on port ${PORT}`);
 });
-// ✅ Health Check Endpoint
